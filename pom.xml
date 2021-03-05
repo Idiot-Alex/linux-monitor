@@ -12,6 +12,7 @@
     <modules>
         <module>linux-monitor-admin</module>
         <module>linux-monitor-client</module>
+        <module>linux-monitor-common</module>
     </modules>
 
     <properties>
