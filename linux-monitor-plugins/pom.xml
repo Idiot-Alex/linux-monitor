@@ -12,7 +12,6 @@
     <artifactId>linux-monitor-client</artifactId>
 
     <modules>
-        <module>linux-monitor-client-remote</module>
         <module>linux-monitor-client-local</module>
         <module>linux-monitor-client-core</module>
     </modules>
