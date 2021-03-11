@@ -3,12 +3,12 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>linux-monitor-client</artifactId>
+        <artifactId>linux-monitor-plugins</artifactId>
         <groupId>com.hotstrip</groupId>
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>linux-monitor-client-local</artifactId>
+    <artifactId>linux-monitor-plugin-ssh</artifactId>
 
     <properties>
         <jsch.version>0.1.55</jsch.version>

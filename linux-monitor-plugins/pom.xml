@@ -9,11 +9,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
-    <artifactId>linux-monitor-client</artifactId>
+    <artifactId>linux-monitor-plugins</artifactId>
 
     <modules>
-        <module>linux-monitor-client-local</module>
-        <module>linux-monitor-client-core</module>
+        <module>linux-monitor-plugin-ssh</module>
     </modules>
 
     <dependencyManagement>
