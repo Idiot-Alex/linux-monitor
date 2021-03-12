@@ -8,6 +8,11 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+/***
+ * ExceptionHandlers
+ * @author Hotstrip
+ * @Description handle exceptions
+ */
 @Slf4j
 @ControllerAdvice
 public class ExceptionHandlers {

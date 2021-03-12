@@ -80,7 +80,8 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
-                    <skipTests>true</skipTests>    <!--默认关掉单元测试 -->
+                    <!--默认关掉单元测试 -->
+                    <skipTests>true</skipTests>
                 </configuration>
             </plugin>
         </plugins>

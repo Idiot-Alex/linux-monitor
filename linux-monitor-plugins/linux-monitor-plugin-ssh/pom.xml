@@ -16,8 +16,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
+            <groupId>com.hotstrip</groupId>
+            <artifactId>linux-monitor-common</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <!-- jsch for ssh2 -->
         <dependency>

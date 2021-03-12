@@ -1,2 +1,8 @@
 spring:
   active: h2
+
+logging:
+  level:
+    root: info
+    org.springframework.boot: info
+    com.hotstrip.linux.monitor: info
