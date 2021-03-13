@@ -1,9 +1,9 @@
-package com.hotstrip.linux.monitor.client.local;
+package com.hotstrip.linux.monitor.plugin.ssh;
 
 import com.hotstrip.linux.monitor.client.local.ssh.HostDO;
 import com.hotstrip.linux.monitor.client.local.ssh.JSchClient;
-import com.hotstrip.linux.monitor.client.local.ssh.session.SessionManage;
-import com.hotstrip.linux.monitor.client.local.ssh.session.SessionManageImpl;
+import com.hotstrip.linux.monitor.plugin.ssh.session.SessionManage;
+import com.hotstrip.linux.monitor.plugin.ssh.session.SessionManageImpl;
 import com.jcraft.jsch.Channel;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.JSchException;

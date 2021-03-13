@@ -1,4 +1,4 @@
-package com.hotstrip.linux.monitor.client.local.ssh.session;
+package com.hotstrip.linux.monitor.plugin.ssh.session;
 
 import com.hotstrip.linux.monitor.client.local.ssh.HostDO;
 import com.hotstrip.linux.monitor.client.local.ssh.JSchClient;
