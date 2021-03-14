@@ -15,6 +15,10 @@ public class SessionServiceImpl implements SessionService {
             session.setPassword(hostDO.getPassword());
             session.setConfig("StrictHostKeyChecking", "no");
             session.connect(3000);
+            // add SESSION_MAP
+            if (session.isConnected()) {
+                SessionManage.getInstance().cacheSessionData(session);
+            }
             return session;
         } catch (JSchException e) {
             e.printStackTrace();
@@ -25,6 +29,8 @@ public class SessionServiceImpl implements SessionService {
     public void closeSession(Session session) {
         if (null != session) {
             session.disconnect();
+            // remove SESSION_MAP
+            SessionManage.getInstance().removeSessionData(session);
         }
     }
 }
