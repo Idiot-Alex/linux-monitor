@@ -6,7 +6,7 @@ import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
 
-public class SessionManageImpl implements SessionManage {
+public class SessionServiceImpl implements SessionService {
 
     public Session openSession(HostDO hostDO) {
         JSch jSch = JSchClient.getInstance();

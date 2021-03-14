@@ -2,8 +2,8 @@ package com.hotstrip.linux.monitor.plugin.ssh;
 
 import com.hotstrip.linux.monitor.client.local.ssh.HostDO;
 import com.hotstrip.linux.monitor.client.local.ssh.JSchClient;
-import com.hotstrip.linux.monitor.plugin.ssh.session.SessionManage;
-import com.hotstrip.linux.monitor.plugin.ssh.session.SessionManageImpl;
+import com.hotstrip.linux.monitor.plugin.ssh.session.SessionService;
+import com.hotstrip.linux.monitor.plugin.ssh.session.SessionServiceImpl;
 import com.jcraft.jsch.Channel;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.JSchException;
@@ -20,7 +20,7 @@ public class Shell {
                 .password("password")
                 .build();
 
-        SessionManage sessionManage = new SessionManageImpl();
+        SessionService sessionManage = new SessionServiceImpl();
         Session session = sessionManage.openSession(hostDO);
 
         try {

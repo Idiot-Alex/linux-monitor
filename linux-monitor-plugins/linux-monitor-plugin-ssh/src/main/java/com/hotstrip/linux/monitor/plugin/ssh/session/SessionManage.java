@@ -1,19 +1,27 @@
 package com.hotstrip.linux.monitor.plugin.ssh.session;
 
-import com.hotstrip.linux.monitor.client.local.ssh.HostDO;
+import com.google.common.collect.Maps;
 import com.jcraft.jsch.Session;
 
-/**
- * @author Hotstrip
- * this is a SSH session manage, provied some method to manage ssh session
- * such as open, close...
- */
-public interface SessionManage {
+import java.util.Optional;
+import java.util.concurrent.ConcurrentMap;
 
-    // open session
-    Session openSession(HostDO hostDO);
+public class SessionManage {
 
+    private SessionManage() {
+    }
 
-    // close session
-    void closeSession(Session session);
+    private static class SessionManageHolder {
+        private static final SessionManage INSTANCE = new SessionManage();
+    }
+
+    public static final SessionManage getInstance() {
+        return SessionManageHolder.INSTANCE;
+    }
+
+    private static final ConcurrentMap<String, Session> SESSION_MAP = Maps.newConcurrentMap();
+
+    public void cacheSessionData(final Session sessionData) {
+        Optional.ofNullable(sessionData).ifPresent(data -> SESSION_MAP.put(data.toString(), data));
+    }
 }
