@@ -1,8 +1,11 @@
 package com.hotstrip.linux.monitor.plugin.ssh.utils;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.io.IOException;
 import java.io.InputStream;
 
+@Slf4j
 public class InputStreamUtil {
 
     /**
@@ -20,8 +23,8 @@ public class InputStreamUtil {
                     break;
                 buffer.append(new String(tmp, 0, i));
             }
-        } catch (IOException ioException) {
-
+        } catch (IOException e) {
+            log.error("read stream error, message: {}, caused: {}", e.getMessage(), e.getCause());
         }
         return buffer.toString();
     }
