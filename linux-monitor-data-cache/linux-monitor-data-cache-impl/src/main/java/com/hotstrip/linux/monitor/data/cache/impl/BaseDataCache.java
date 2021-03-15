@@ -1,11 +1,12 @@
 package com.hotstrip.linux.monitor.data.cache.impl;
 
 import com.google.common.collect.Maps;
+import com.hotstrip.linux.monitor.data.cache.api.BaseDataCacheService;
 
 import java.util.Optional;
 import java.util.concurrent.ConcurrentMap;
 
-public class BaseDataCache {
+public class BaseDataCache implements BaseDataCacheService {
 
     private BaseDataCache() {
     }

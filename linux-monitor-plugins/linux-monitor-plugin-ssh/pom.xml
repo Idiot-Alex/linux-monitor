@@ -20,6 +20,12 @@
             <artifactId>linux-monitor-common</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.hotstrip</groupId>
+            <artifactId>linux-monitor-dada-cache-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
         <!-- jsch for ssh2 -->
         <dependency>
             <groupId>com.jcraft</groupId>

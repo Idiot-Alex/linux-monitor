@@ -2,9 +2,7 @@ package com.hotstrip.linux.monitor.plugin.ssh.session;
 
 import com.hotstrip.linux.monitor.plugin.ssh.HostDO;
 import com.hotstrip.linux.monitor.plugin.ssh.executor.ChannelExecutorImpl;
-import com.hotstrip.linux.monitor.plugin.ssh.executor.ExecuteResult;
 import com.hotstrip.linux.monitor.plugin.ssh.executor.Executor;
-import com.hotstrip.linux.monitor.plugin.ssh.utils.InputStreamUtil;
 import com.jcraft.jsch.Channel;
 import com.jcraft.jsch.ChannelExec;
 import com.jcraft.jsch.JSchException;
@@ -13,6 +11,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.util.Scanner;
 
 @Slf4j
 public class TestSession {
@@ -45,12 +48,21 @@ public class TestSession {
         final Session session = SessionManage.getInstance().getSessionData(key);
         try {
             Channel channel = session.openChannel(ConstPool.EXEC_CHANNEL);
-            ((ChannelExec) channel).setCommand("ps -ef | grep jar");
+            // 获取 Mac OS 系统的平均负载命令 uptime | cut -d":" -f4- | sed s/,//g
+            ((ChannelExec) channel).setCommand("uptime | cut -d\":\" -f4- | sed s/,//g");
 
             Executor executor = new ChannelExecutorImpl((ChannelExec) channel);
 
             executor.execute(data -> {
                 log.info(data.toString());
+                InputStream is = new ByteArrayInputStream(data.getResult().getBytes());
+                Scanner scanner = new Scanner(is).useDelimiter("\\s+");
+
+                final double one = scanner.nextDouble();
+                final double five = scanner.nextDouble();
+                final double fifteen = scanner.nextDouble();
+
+                log.info("[{}, {}, {}]", one, five, fifteen);
                 sessionService.closeSession(session);
             });
         } catch (JSchException e) {
