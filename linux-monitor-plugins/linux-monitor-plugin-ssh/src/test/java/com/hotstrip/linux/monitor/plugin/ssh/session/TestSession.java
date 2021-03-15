@@ -1,6 +1,7 @@
 package com.hotstrip.linux.monitor.plugin.ssh.session;
 
 import com.hotstrip.linux.monitor.plugin.ssh.HostDO;
+import com.hotstrip.linux.monitor.plugin.ssh.utils.InputStreamUtil;
 import com.jcraft.jsch.Channel;
 import com.jcraft.jsch.ChannelExec;
 import com.jcraft.jsch.JSchException;
@@ -20,10 +21,11 @@ public class TestSession {
     @Before
     public void setup() {
         System.out.println("TestSession before...");
+        // replace your host, user and password, if you want run this test pass
         hostDO = HostDO.builder()
-                .host("121.42.160.109")
-                .user("root")
-                .password("272377@zx")
+                .host("127.0.0.1")
+                .user("test")
+                .password("123456")
                 .build();
         testOpenSession();
     }
@@ -43,17 +45,14 @@ public class TestSession {
             final Channel channel = session.openChannel(ConstPool.EXEC_CHANNEL);
             ((ChannelExec)channel).setCommand("ps -ef | grep jar");
 
-            InputStream in=channel.getInputStream();
+            InputStream in = channel.getInputStream();
 
             channel.connect(3000);
 
-            byte[] tmp=new byte[1024];
             while(true){
-                while(in.available()>0){
-                    int i=in.read(tmp, 0, 1024);
-                    if(i<0)break;
-                    System.out.print(new String(tmp, 0, i));
-                }
+                final String result = InputStreamUtil.streamToString(in);
+                System.out.println(result);
+
                 if(channel.isClosed()){
                     if(in.available()>0) continue;
                     System.out.println("exit-status: "+channel.getExitStatus());
