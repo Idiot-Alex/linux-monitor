@@ -1,6 +1,6 @@
 package com.hotstrip.linux.monitor.admin.exception;
 
-import com.hotstrip.linux.monitor.ConstResult;
+import com.hotstrip.linux.monitor.common.ConstResult;
 import com.hotstrip.linux.monitor.common.entity.Result;
 import com.hotstrip.linux.monitor.common.exception.MonitorException;
 import lombok.extern.slf4j.Slf4j;

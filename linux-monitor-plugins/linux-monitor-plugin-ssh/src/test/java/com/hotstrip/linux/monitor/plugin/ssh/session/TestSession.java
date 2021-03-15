@@ -1,6 +1,6 @@
 package com.hotstrip.linux.monitor.plugin.ssh.session;
 
-import com.hotstrip.linux.monitor.plugin.ssh.HostDO;
+import com.hotstrip.linux.monitor.common.pojo.HostDO;
 import com.hotstrip.linux.monitor.plugin.ssh.executor.ChannelExecutorImpl;
 import com.hotstrip.linux.monitor.plugin.ssh.executor.Executor;
 import com.jcraft.jsch.Channel;
@@ -12,7 +12,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.Scanner;
@@ -39,7 +38,7 @@ public class TestSession {
     public void testOpenSession() {
         Session session = sessionService.openSession(hostDO);
         log.info("testOpenSession...session is connected: [{}]", session.isConnected());
-        Assert.assertEquals(true, session.isConnected());
+        Assert.assertTrue(session.isConnected());
     }
 
     @Test

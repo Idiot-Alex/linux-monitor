@@ -1,6 +1,6 @@
 package com.hotstrip.linux.monitor.common.entity;
 
-import com.hotstrip.linux.monitor.ConstResult;
+import com.hotstrip.linux.monitor.common.ConstResult;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

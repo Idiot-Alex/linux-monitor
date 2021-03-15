@@ -1,13 +1,10 @@
-package com.hotstrip.linux.monitor.plugin.ssh;
+package com.hotstrip.linux.monitor.common.pojo;
 
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.experimental.SuperBuilder;
 
 @Data
-@SuperBuilder
-@NoArgsConstructor
+@Builder
 public class HostDO {
     private String host;
     @Builder.Default

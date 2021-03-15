@@ -1,4 +1,4 @@
-package com.hotstrip.linux.monitor.client.core.pojo;
+package com.hotstrip.linux.monitor.common.pojo;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -11,10 +11,10 @@ import java.math.BigDecimal;
 @SuperBuilder
 @NoArgsConstructor
 //@EqualsAndHashCode(callSuper = true)
-public final class ProcLoadAvgDO {
+public class SystemLoadAvgDO {
 
-    private BigDecimal lavg1;
-    private BigDecimal lavg5;
-    private BigDecimal lavg15;
+    private BigDecimal one;
+    private BigDecimal five;
+    private BigDecimal fifteen;
 
 }

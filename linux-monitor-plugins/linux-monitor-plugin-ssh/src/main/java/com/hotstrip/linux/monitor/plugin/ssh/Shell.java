@@ -1,5 +1,6 @@
 package com.hotstrip.linux.monitor.plugin.ssh;
 
+import com.hotstrip.linux.monitor.common.pojo.HostDO;
 import com.hotstrip.linux.monitor.plugin.ssh.session.SessionService;
 import com.hotstrip.linux.monitor.plugin.ssh.session.SessionServiceImpl;
 import com.jcraft.jsch.Channel;

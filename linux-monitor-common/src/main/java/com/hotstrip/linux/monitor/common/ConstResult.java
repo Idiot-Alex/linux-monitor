@@ -1,4 +1,4 @@
-package com.hotstrip.linux.monitor;
+package com.hotstrip.linux.monitor.common;
 
 public class ConstResult {
 
