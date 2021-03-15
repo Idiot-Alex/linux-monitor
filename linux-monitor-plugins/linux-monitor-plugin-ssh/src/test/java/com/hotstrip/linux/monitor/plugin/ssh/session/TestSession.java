@@ -1,8 +1,10 @@
 package com.hotstrip.linux.monitor.plugin.ssh.session;
 
 import com.hotstrip.linux.monitor.common.pojo.HostDO;
+import com.hotstrip.linux.monitor.common.pojo.SystemLoadAvgDO;
 import com.hotstrip.linux.monitor.plugin.ssh.executor.ChannelExecutorImpl;
 import com.hotstrip.linux.monitor.plugin.ssh.executor.Executor;
+import com.hotstrip.linux.monitor.plugin.ssh.executor.handler.LoadAvgHandler;
 import com.jcraft.jsch.Channel;
 import com.jcraft.jsch.ChannelExec;
 import com.jcraft.jsch.JSchException;
@@ -51,19 +53,9 @@ public class TestSession {
             ((ChannelExec) channel).setCommand("uptime | cut -d\":\" -f4- | sed s/,//g");
 
             Executor executor = new ChannelExecutorImpl((ChannelExec) channel);
+            executor.execute(new LoadAvgHandler());
 
-            executor.execute(data -> {
-                log.info(data.toString());
-                InputStream is = new ByteArrayInputStream(data.getResult().getBytes());
-                Scanner scanner = new Scanner(is).useDelimiter("\\s+");
-
-                final double one = scanner.nextDouble();
-                final double five = scanner.nextDouble();
-                final double fifteen = scanner.nextDouble();
-
-                log.info("[{}, {}, {}]", one, five, fifteen);
-                sessionService.closeSession(session);
-            });
+            sessionService.closeSession(session);
         } catch (JSchException e) {
             e.printStackTrace();
         }

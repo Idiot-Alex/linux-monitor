@@ -1,5 +1,6 @@
 package com.hotstrip.linux.monitor.plugin.ssh.executor;
 
+import com.hotstrip.linux.monitor.plugin.ssh.executor.handler.ExecutorHandler;
 import com.hotstrip.linux.monitor.plugin.ssh.utils.InputStreamUtil;
 import com.jcraft.jsch.ChannelExec;
 import com.jcraft.jsch.JSchException;
@@ -18,7 +19,7 @@ public class ChannelExecutorImpl implements Executor {
     }
 
     @Override
-    public void execute(ExecutorHandler executorHandler) {
+    public void execute(final ExecutorHandler executorHandler) {
         ExecuteResult executeResult = ExecuteResult.builder().build();
         try {
             InputStream in = this.channelExec.getInputStream();

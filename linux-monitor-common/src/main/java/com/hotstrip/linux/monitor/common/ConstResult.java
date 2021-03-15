@@ -12,6 +12,11 @@ public class ConstResult {
      */
     public static final int ERROR = 500;
 
+    /**
+     * exit status code 0
+     */
+    public static final int EXIT_STATUS_0 = 0;
+
     public static final String SUCCESS_MESSAGE = "success";
 
     public static final String ERROR_MESSAGE = "error";
