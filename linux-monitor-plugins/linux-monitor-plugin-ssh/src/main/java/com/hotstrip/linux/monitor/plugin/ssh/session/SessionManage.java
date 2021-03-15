@@ -23,11 +23,16 @@ public class SessionManage {
 
     /**
      * get key from session
-     * @param session
+     * @param host
+     * @param userName
      * @return
      */
+    public String getSessionKey(final String host, final String userName) {
+        return host + ConstPool.COLON + userName;
+    }
+
     private String getSessionKey(final Session session) {
-        return session.getHost() + ConstPool.COLON + session.getPort();
+        return getSessionKey(session.getHost(), session.getUserName());
     }
 
     /**
@@ -46,5 +51,14 @@ public class SessionManage {
     public void removeSessionData(Session session) {
         final String key = getSessionKey(session);
         Optional.of(SESSION_MAP.get(key)).ifPresent(data -> SESSION_MAP.remove(key));
+    }
+
+    /**
+     * get session from map
+     * @param key
+     * @return
+     */
+    public Session getSessionData(final String key) {
+        return SESSION_MAP.get(key);
     }
 }
