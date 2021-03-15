@@ -1,4 +1,4 @@
-package com.hotstrip.linux.monitor.client.local.ssh;
+package com.hotstrip.linux.monitor.plugin.ssh;
 
 import com.jcraft.jsch.JSch;
 
