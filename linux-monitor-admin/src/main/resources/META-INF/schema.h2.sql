@@ -1,5 +1,5 @@
 /*Table structure for table `dashboard_user` */
-CREATE TABLE IF NOT EXISTS `dashboard_user` (
+CREATE TABLE IF NOT EXISTS `admin_user` (
   `id` int NOT NULL AUTO_INCREMENT COMMENT 'primary key id',
   `user_name` varchar(64) NOT NULL COMMENT 'user name',
   `password` varchar(128) DEFAULT NULL COMMENT 'user password',

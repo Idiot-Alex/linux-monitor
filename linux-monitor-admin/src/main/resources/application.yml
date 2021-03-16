@@ -1,5 +1,6 @@
 spring:
-  active: h2
+  profiles:
+    active: h2
   # thymeleaf
   thymeleaf:
     prefix: classpath:/templates/
@@ -10,6 +11,11 @@ spring:
     username: root
     password: 123456
     driver-class-name: com.mysql.jdbc.Driver
+
+# mybatis
+mybatis:
+  config-location: classpath:/mybatis/mybatis-config.xml
+  mapper-locations: classpath:/mappers/*.xml
 
 database:
   dialect: mysql

@@ -13,5 +13,6 @@ public class AdminUserDO extends BaseDO {
 
     private String userName;
     private String password;
+    private Integer enabled;
 
 }
