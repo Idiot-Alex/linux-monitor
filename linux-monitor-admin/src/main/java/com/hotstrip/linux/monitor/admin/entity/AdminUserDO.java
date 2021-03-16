@@ -11,7 +11,7 @@ import lombok.experimental.SuperBuilder;
 @EqualsAndHashCode(callSuper = true)
 public class AdminUserDO extends BaseDO {
 
-    private String name;
+    private String userName;
     private String password;
 
 }

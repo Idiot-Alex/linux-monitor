@@ -4,6 +4,16 @@ spring:
   thymeleaf:
     prefix: classpath:/templates/
     suffix: .html
+  # datasource
+  datasource:
+    url: jdbc:mysql://localhost:3306/linux-monitor?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+
+database:
+  dialect: mysql
+  init_script: "META-INF/schema.sql"
 
 logging:
   level:

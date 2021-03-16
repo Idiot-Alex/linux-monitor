@@ -7,3 +7,7 @@ spring:
     username: sa
     password: sa
     driver-class-name: org.h2.Driver
+
+database:
+  dialect: h2
+  init_script: "META-INF/schema.h2.sql"
