@@ -25,6 +25,8 @@
         <springboot.version>2.3.5.RELEASE</springboot.version>
         <guava.version>30.1-jre</guava.version>
         <slf4j.version>1.7.30</slf4j.version>
+        <h2.version>1.4.200</h2.version>
+        <mysql.version>5.1.49</mysql.version>
         <lombok.version>1.18.16</lombok.version>
     </properties>
 

@@ -2,6 +2,8 @@ server:
   port: 8080
 
 spring:
-  thymeleaf:
-    prefix: classpath:/templates/
-    suffix: .html
+  datasource:
+    url: jdbc:h2:mem:~/linux-monitor;DB_CLOSE_DELAY=-1
+    username: sa
+    password: sa
+    driver-class-name: org.h2.Driver

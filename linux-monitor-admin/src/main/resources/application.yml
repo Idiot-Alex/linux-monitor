@@ -6,3 +6,8 @@ logging:
     root: info
     org.springframework.boot: info
     com.hotstrip.linux.monitor: info
+
+spring:
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
