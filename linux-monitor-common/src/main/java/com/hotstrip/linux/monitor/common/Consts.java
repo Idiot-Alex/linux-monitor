@@ -1,6 +1,6 @@
 package com.hotstrip.linux.monitor.common;
 
-public class ConstResult {
+public class Consts {
 
     /**
      * The constant SUCCESS.
@@ -20,4 +20,6 @@ public class ConstResult {
     public static final String SUCCESS_MESSAGE = "success";
 
     public static final String ERROR_MESSAGE = "error";
+
+    public static final String LINE_SEPARATOR = System.getProperty("line.separator");
 }

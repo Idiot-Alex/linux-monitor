@@ -1,6 +1,6 @@
 package com.hotstrip.linux.monitor.admin.exception;
 
-import com.hotstrip.linux.monitor.common.ConstResult;
+import com.hotstrip.linux.monitor.common.Consts;
 import com.hotstrip.linux.monitor.common.entity.Result;
 import com.hotstrip.linux.monitor.common.exception.MonitorException;
 import lombok.extern.slf4j.Slf4j;
@@ -28,7 +28,7 @@ public class ExceptionHandlers {
         } else {
             message = "The system is busy, please try again later";
         }
-        return Result.error(ConstResult.ERROR, message);
+        return Result.error(Consts.ERROR, message);
     }
 
 }

@@ -1,6 +1,6 @@
 package com.hotstrip.linux.monitor.common.entity;
 
-import com.hotstrip.linux.monitor.common.ConstResult;
+import com.hotstrip.linux.monitor.common.Consts;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -43,7 +43,7 @@ public class Result {
      * @return {@linkplain Result}
      */
     public static Result success(final Object data) {
-        return success(ConstResult.SUCCESS_MESSAGE, null);
+        return success(Consts.SUCCESS_MESSAGE, null);
     }
 
     /**
@@ -53,7 +53,7 @@ public class Result {
      * @return {@linkplain Result}
      */
     public static Result success(final String message, final Object data) {
-        return new Result(ConstResult.SUCCESS, message, data);
+        return new Result(Consts.SUCCESS, message, data);
     }
 
     /**
@@ -73,7 +73,7 @@ public class Result {
      * @return {@linkplain Result}
      */
     public static Result error(final int code, final Object data) {
-        return error(code, ConstResult.ERROR_MESSAGE, data);
+        return error(code, Consts.ERROR_MESSAGE, data);
     }
 
     /**

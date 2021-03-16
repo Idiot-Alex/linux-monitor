@@ -1,8 +1,7 @@
 package com.hotstrip.linux.monitor.plugin.ssh.executor.handler;
 
-import com.hotstrip.linux.monitor.common.ConstResult;
+import com.hotstrip.linux.monitor.common.Consts;
 import com.hotstrip.linux.monitor.common.pojo.SystemLoadAvgDO;
-import com.hotstrip.linux.monitor.data.cache.api.BaseDataCacheService;
 import com.hotstrip.linux.monitor.plugin.ssh.executor.ExecuteResult;
 import lombok.extern.slf4j.Slf4j;
 
@@ -15,7 +14,7 @@ public class LoadAvgHandler implements ExecutorHandler {
 
     @Override
     public void handle(final ExecuteResult executeResult) {
-        if (executeResult.getStatus() != ConstResult.EXIT_STATUS_0) {
+        if (executeResult.getStatus() != Consts.EXIT_STATUS_0) {
             log.error("command exec exit code: [{}]", executeResult.getStatus());
             return;
         }
