@@ -15,8 +15,15 @@ public interface AdminUserMapper {
 
     /**
      * insert AdminUser
-     * @param adminUserDO
+     * @param adminUserDO {@linkplain AdminUserDO}
      * @return rows
      */
     int insert(AdminUserDO adminUserDO);
+
+    /**
+     * update AdminUser
+     * @param adminUserDO {@linkplain AdminUserDO}
+     * @return rows
+     */
+    int update(AdminUserDO adminUserDO);
 }

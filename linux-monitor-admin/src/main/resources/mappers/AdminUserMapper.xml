@@ -5,23 +5,67 @@
         <id column="id" jdbcType="INTEGER" property="id"/>
         <result column="user_name" jdbcType="VARCHAR" property="userName"/>
         <result column="password" jdbcType="VARCHAR" property="password"/>
-        <result column="enabled" jdbcType="TINYINT" property="enabled"/>
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
         <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        id, user_name, password, enabled,
+        id, user_name, password,
         create_time, update_time
     </sql>
 
     <insert id="insert" parameterType="com.hotstrip.linux.monitor.admin.entity.AdminUserDO">
         insert into admin_user
-        (id, user_name, password, enabled, create_time, update_time )
-        values
-        (#{id, jdbcType=INTEGER}, #{userName, jdbcType=VARCHAR}, #{password, jdbcType=VARCHAR},
-        #{enabled, jdbcType=TINYINT}, #{createTime, jdbcType=TIMESTAMP}, #{updateTime, jdbcType=TIMESTAMP} )
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            id,
+            <if test="userName != null">
+                user_name,
+            </if>
+            <if test="password != null">
+                password,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{id,jdbcType=INTEGER},
+            <if test="userName != null">
+                #{userName, jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                #{password, jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime, jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime, jdbcType=TIMESTAMP},
+            </if>
+        </trim>
     </insert>
+
+    <update id="update" parameterType="com.hotstrip.linux.monitor.admin.entity.AdminUserDO">
+        update admin_user
+        <set>
+            <if test="userName != null">
+                user_name = #{userName, jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                password = #{password, jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime, jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime, jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id, jdbcType=INTEGER}
+    </update>
 
     <select id="findById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select

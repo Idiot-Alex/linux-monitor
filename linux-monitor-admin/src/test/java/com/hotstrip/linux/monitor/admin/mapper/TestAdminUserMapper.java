@@ -21,7 +21,6 @@ public class TestAdminUserMapper extends TestApplication {
                 .id(1)
                 .userName("user-name")
                 .password("password")
-                .enabled(1)
                 .createTime(new Timestamp(System.currentTimeMillis()))
                 .updateTime(new Timestamp(System.currentTimeMillis()))
                 .build();
