@@ -30,8 +30,9 @@ public class ChannelExecutorImpl implements Executor {
                     executeResult.setResult(result);
                 }
                 if (this.channelExec.isClosed()) {
-                    if(in.available() > 0) continue;
+                    if (in.available() > 0) continue;
                     executeResult.setStatus(this.channelExec.getExitStatus());
+                    executeResult.setHost(this.channelExec.getSession().getHost());
                     break;
                 }
                 Thread.sleep(200);

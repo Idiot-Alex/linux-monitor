@@ -16,4 +16,9 @@ public class ExecuteResult {
      * 0 means exit rightly
      */
     private int status;
+
+    /**
+     * return host after exec command
+     */
+    private String host;
 }

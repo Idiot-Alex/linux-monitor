@@ -10,6 +10,7 @@ import lombok.experimental.SuperBuilder;
 //@EqualsAndHashCode(callSuper = true)
 public class SystemLoadAvgDO {
 
+    private String host;
     private Double one;
     private Double five;
     private Double fifteen;

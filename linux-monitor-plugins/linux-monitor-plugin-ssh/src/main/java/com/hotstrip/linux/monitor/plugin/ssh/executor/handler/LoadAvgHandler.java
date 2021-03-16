@@ -2,8 +2,8 @@ package com.hotstrip.linux.monitor.plugin.ssh.executor.handler;
 
 import com.hotstrip.linux.monitor.common.ConstResult;
 import com.hotstrip.linux.monitor.common.pojo.SystemLoadAvgDO;
+import com.hotstrip.linux.monitor.data.cache.api.BaseDataCacheService;
 import com.hotstrip.linux.monitor.plugin.ssh.executor.ExecuteResult;
-import com.hotstrip.linux.monitor.plugin.ssh.session.ConstPool;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.ByteArrayInputStream;
@@ -27,11 +27,11 @@ public class LoadAvgHandler implements ExecutorHandler {
         final double fifteen = scanner.nextDouble();
 
         final SystemLoadAvgDO systemLoadAvgDO = SystemLoadAvgDO.builder()
+                .host(executeResult.getHost())
                 .one(one)
                 .five(five)
                 .fifteen(fifteen)
                 .build();
-
         log.info("system loadavg: {}", systemLoadAvgDO.toString());
     }
 }
