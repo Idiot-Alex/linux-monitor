@@ -54,6 +54,7 @@ public class LocalDataSourceLoader implements InstantiationAwareBeanPostProcesso
 
     @SneakyThrows
     protected void init(final DataSourceProperties properties) {
+        // replace url because database may not exists when init sql script
         String jdbcUrl = StringUtils.replace(properties.getUrl(), "/linux-monitor?", "?");
         Connection connection = DriverManager.getConnection(jdbcUrl, properties.getUsername(), properties.getPassword());
         this.execute(connection);
