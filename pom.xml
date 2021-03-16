@@ -29,6 +29,7 @@
         <mysql.version>5.1.49</mysql.version>
         <commons-lang3.version>3.12.0</commons-lang3.version>
         <mybatis.starter.version>1.1.1</mybatis.starter.version>
+        <pagehelper.version>5.2.0</pagehelper.version>
         <lombok.version>1.18.16</lombok.version>
     </properties>
 
