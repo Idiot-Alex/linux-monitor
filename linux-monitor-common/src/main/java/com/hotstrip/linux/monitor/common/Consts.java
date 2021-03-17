@@ -21,5 +21,7 @@ public class Consts {
 
     public static final String ERROR_MESSAGE = "error";
 
+    public static final String STARTS = "******";
+
     public static final String LINE_SEPARATOR = System.getProperty("line.separator");
 }

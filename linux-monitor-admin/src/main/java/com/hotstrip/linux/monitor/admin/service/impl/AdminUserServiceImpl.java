@@ -22,24 +22,22 @@ public class AdminUserServiceImpl implements AdminUserService {
     private AdminUserMapper adminUserMapper;
 
     @Override
-    public void insertOrUpdate(final AdminUserDTO adminUserDTO) {
+    public int insertOrUpdate(final AdminUserDTO adminUserDTO) {
         AdminUserDO adminUserDO = AdminUserDO.buildDO(adminUserDTO);
         if (adminUserDO.getId() == null) {
-            adminUserMapper.insert(adminUserDO);
+            return adminUserMapper.insert(adminUserDO);
         } else {
-            adminUserMapper.update(adminUserDO);
+            return adminUserMapper.update(adminUserDO);
         }
     }
 
     @Override
-    public void delete(final List<Integer> ids) {
+    public int delete(final List<Integer> ids) {
         int countRows = 0;
         for (Integer id : ids) {
             countRows += adminUserMapper.delete(id);
         }
-        if (countRows < ids.size()) {
-            log.error("delete admin_user rows: {}/{}", countRows, ids.size());
-        }
+        return countRows;
     }
 
     @Override

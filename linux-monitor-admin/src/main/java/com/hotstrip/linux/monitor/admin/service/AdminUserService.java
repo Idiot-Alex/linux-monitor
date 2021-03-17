@@ -12,14 +12,16 @@ public interface AdminUserService {
     /**
      * insert or update AdminUser
      * @param adminUserDTO {@linkplain AdminUserDTO}
+     * @return rows
      */
-    void insertOrUpdate(AdminUserDTO adminUserDTO);
+    int insertOrUpdate(AdminUserDTO adminUserDTO);
 
     /**
      * delete AdminUser by Ids
      * @param ids primary keys into a list
+     * @return rows
      */
-    void delete(List<Integer> ids);
+    int delete(List<Integer> ids);
 
     /**
      * find AdminUser by id
