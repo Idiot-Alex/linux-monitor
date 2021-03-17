@@ -1,6 +1,7 @@
 package com.hotstrip.linux.monitor.admin.mapper;
 
 import com.hotstrip.linux.monitor.admin.entity.ServerDO;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -29,4 +30,12 @@ public interface ServerMapper {
      */
     @Select("select * from server where id = #{id}")
     ServerDO findById(@Param("id") Integer id);
+
+    /**
+     * delete Server by id
+     * @param id primary key
+     * @return rows
+     */
+    @Delete("delete from server where id = #{id}")
+    int delete(@Param("id") Integer id);
 }

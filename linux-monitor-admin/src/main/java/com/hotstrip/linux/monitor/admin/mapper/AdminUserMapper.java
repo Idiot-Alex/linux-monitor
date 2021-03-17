@@ -1,6 +1,7 @@
 package com.hotstrip.linux.monitor.admin.mapper;
 
 import com.hotstrip.linux.monitor.admin.entity.AdminUserDO;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -21,6 +22,14 @@ public interface AdminUserMapper {
      * @return rows
      */
     int update(AdminUserDO adminUserDO);
+
+    /**
+     * delete AdminUser by id
+     * @param id primary key
+     * @return rows
+     */
+    @Delete("delete from admin_user where id = #{id}")
+    int delete(@Param("id") Integer id);
 
     /**
      * find AdminUser by id
