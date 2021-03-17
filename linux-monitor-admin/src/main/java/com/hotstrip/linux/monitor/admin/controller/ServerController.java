@@ -2,9 +2,7 @@ package com.hotstrip.linux.monitor.admin.controller;
 
 import com.hotstrip.linux.monitor.admin.page.PageParams;
 import com.hotstrip.linux.monitor.admin.page.PageResult;
-import com.hotstrip.linux.monitor.admin.pojo.dto.AdminUserDTO;
 import com.hotstrip.linux.monitor.admin.pojo.dto.ServerDTO;
-import com.hotstrip.linux.monitor.admin.pojo.entity.ServerDO;
 import com.hotstrip.linux.monitor.admin.pojo.query.ServerQuery;
 import com.hotstrip.linux.monitor.admin.pojo.vo.ServerVO;
 import com.hotstrip.linux.monitor.admin.service.ServerService;
