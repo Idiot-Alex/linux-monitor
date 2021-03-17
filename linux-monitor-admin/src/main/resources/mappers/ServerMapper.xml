@@ -86,4 +86,26 @@
         </set>
         where id = #{id, jdbcType=INTEGER}
     </update>
+
+    <select id="countByQuery" parameterType="com.hotstrip.linux.monitor.admin.pojo.query.ServerQuery" resultType="java.lang.Integer">
+        select count(*)
+        from server
+        where 1=1
+        <if test="host != null">
+            and host = #{host, jdbcType=VARCHAR}
+        </if>
+    </select>
+
+    <select id="selectByQuery" parameterType="com.hotstrip.linux.monitor.admin.pojo.query.ServerQuery" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/>
+        from server
+        where 1=1
+        <if test="host != null">
+            and host = #{host, jdbcType=VARCHAR}
+        </if>
+        order by id desc
+        <if test="pageParams != null">
+            limit #{pageParams.offset}, #{pageParams.pageSize}
+        </if>
+    </select>
 </mapper>
