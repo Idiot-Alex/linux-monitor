@@ -86,11 +86,4 @@
         </set>
         where id = #{id, jdbcType=INTEGER}
     </update>
-
-    <select id="findById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List"/>
-        from server
-        where id = #{id, jdbcType=INTEGER}
-    </select>
 </mapper>

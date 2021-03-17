@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
-@Service
 @Slf4j
+@Service
 public class AdminUserServiceImpl implements AdminUserService {
     @Resource
     private AdminUserMapper adminUserMapper;
