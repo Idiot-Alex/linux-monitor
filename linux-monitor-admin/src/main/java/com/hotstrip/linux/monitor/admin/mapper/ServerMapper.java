@@ -1,6 +1,6 @@
 package com.hotstrip.linux.monitor.admin.mapper;
 
-import com.hotstrip.linux.monitor.admin.entity.ServerDO;
+import com.hotstrip.linux.monitor.admin.pojo.entity.ServerDO;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;

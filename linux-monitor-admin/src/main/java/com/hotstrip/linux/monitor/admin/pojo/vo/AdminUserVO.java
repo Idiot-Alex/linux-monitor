@@ -1,6 +1,6 @@
-package com.hotstrip.linux.monitor.admin.vo;
+package com.hotstrip.linux.monitor.admin.pojo.vo;
 
-import com.hotstrip.linux.monitor.admin.entity.AdminUserDO;
+import com.hotstrip.linux.monitor.admin.pojo.entity.AdminUserDO;
 import com.hotstrip.linux.monitor.common.utils.DateUtil;
 import lombok.AllArgsConstructor;
 import lombok.Data;

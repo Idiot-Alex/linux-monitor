@@ -1,4 +1,4 @@
-package com.hotstrip.linux.monitor.admin.dto;
+package com.hotstrip.linux.monitor.admin.pojo.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,8 +11,10 @@ import java.io.Serializable;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class AdminUserDTO implements Serializable {
+public class ServerDTO implements Serializable {
     private Integer id;
-    private String userName;
+    private String host;
+    private String user;
     private String password;
+    private Integer port;
 }

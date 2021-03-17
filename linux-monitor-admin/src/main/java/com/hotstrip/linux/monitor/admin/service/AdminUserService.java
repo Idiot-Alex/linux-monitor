@@ -1,7 +1,9 @@
 package com.hotstrip.linux.monitor.admin.service;
 
-import com.hotstrip.linux.monitor.admin.dto.AdminUserDTO;
-import com.hotstrip.linux.monitor.admin.vo.AdminUserVO;
+import com.hotstrip.linux.monitor.admin.page.PageResult;
+import com.hotstrip.linux.monitor.admin.pojo.dto.AdminUserDTO;
+import com.hotstrip.linux.monitor.admin.pojo.query.AdminUserQuery;
+import com.hotstrip.linux.monitor.admin.pojo.vo.AdminUserVO;
 
 import java.util.List;
 
@@ -25,4 +27,11 @@ public interface AdminUserService {
      * @return {@linkplain AdminUserVO}
      */
     AdminUserVO findById(Integer id);
+
+    /**
+     * list by page
+     * @param adminUserQuery {@linkplain AdminUserQuery}
+     * @return {@linkplain PageResult}
+     */
+    PageResult<AdminUserVO> listByPage(AdminUserQuery adminUserQuery);
 }

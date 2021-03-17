@@ -1,7 +1,7 @@
 package com.hotstrip.linux.monitor.admin.service;
 
-import com.hotstrip.linux.monitor.admin.dto.ServerDTO;
-import com.hotstrip.linux.monitor.admin.vo.ServerVO;
+import com.hotstrip.linux.monitor.admin.pojo.dto.ServerDTO;
+import com.hotstrip.linux.monitor.admin.pojo.vo.ServerVO;
 
 import java.util.List;
 

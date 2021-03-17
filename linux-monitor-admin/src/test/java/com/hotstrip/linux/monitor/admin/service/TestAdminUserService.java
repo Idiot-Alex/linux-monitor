@@ -1,10 +1,10 @@
 package com.hotstrip.linux.monitor.admin.service;
 
 import com.hotstrip.linux.monitor.admin.TestApplication;
-import com.hotstrip.linux.monitor.admin.dto.AdminUserDTO;
-import com.hotstrip.linux.monitor.admin.entity.AdminUserDO;
+import com.hotstrip.linux.monitor.admin.pojo.dto.AdminUserDTO;
+import com.hotstrip.linux.monitor.admin.pojo.entity.AdminUserDO;
 import com.hotstrip.linux.monitor.admin.mapper.AdminUserMapper;
-import com.hotstrip.linux.monitor.admin.vo.AdminUserVO;
+import com.hotstrip.linux.monitor.admin.pojo.vo.AdminUserVO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Before;

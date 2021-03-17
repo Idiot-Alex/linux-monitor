@@ -1,7 +1,7 @@
 package com.hotstrip.linux.monitor.admin.mapper;
 
 import com.hotstrip.linux.monitor.admin.TestApplication;
-import com.hotstrip.linux.monitor.admin.entity.ServerDO;
+import com.hotstrip.linux.monitor.admin.pojo.entity.ServerDO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Before;

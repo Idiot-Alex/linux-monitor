@@ -1,11 +1,10 @@
 package com.hotstrip.linux.monitor.admin.service.impl;
 
-import com.hotstrip.linux.monitor.admin.dto.ServerDTO;
-import com.hotstrip.linux.monitor.admin.entity.ServerDO;
+import com.hotstrip.linux.monitor.admin.pojo.dto.ServerDTO;
+import com.hotstrip.linux.monitor.admin.pojo.entity.ServerDO;
 import com.hotstrip.linux.monitor.admin.mapper.ServerMapper;
 import com.hotstrip.linux.monitor.admin.service.ServerService;
-import com.hotstrip.linux.monitor.admin.vo.AdminUserVO;
-import com.hotstrip.linux.monitor.admin.vo.ServerVO;
+import com.hotstrip.linux.monitor.admin.pojo.vo.ServerVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

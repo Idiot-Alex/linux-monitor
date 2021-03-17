@@ -1,4 +1,4 @@
-package com.hotstrip.linux.monitor.admin.entity;
+package com.hotstrip.linux.monitor.admin.pojo.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

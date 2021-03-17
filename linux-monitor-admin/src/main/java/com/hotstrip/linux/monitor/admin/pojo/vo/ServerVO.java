@@ -1,6 +1,6 @@
-package com.hotstrip.linux.monitor.admin.vo;
+package com.hotstrip.linux.monitor.admin.pojo.vo;
 
-import com.hotstrip.linux.monitor.admin.entity.ServerDO;
+import com.hotstrip.linux.monitor.admin.pojo.entity.ServerDO;
 import com.hotstrip.linux.monitor.common.utils.DateUtil;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,6 +21,11 @@ public class ServerVO implements Serializable {
     private String createTime;
     private String updateTime;
 
+    /**
+     * ServerDO to ServerVO
+     * @param serverDO {@linkplain ServerDO}
+     * @return {@linkplain ServerVO}
+     */
     public static ServerVO buildVO(ServerDO serverDO) {
         return Optional.ofNullable(serverDO)
                 .map(item ->
