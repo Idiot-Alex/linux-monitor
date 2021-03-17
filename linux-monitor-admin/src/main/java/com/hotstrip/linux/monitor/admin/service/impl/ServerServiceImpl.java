@@ -4,6 +4,8 @@ import com.hotstrip.linux.monitor.admin.dto.ServerDTO;
 import com.hotstrip.linux.monitor.admin.entity.ServerDO;
 import com.hotstrip.linux.monitor.admin.mapper.ServerMapper;
 import com.hotstrip.linux.monitor.admin.service.ServerService;
+import com.hotstrip.linux.monitor.admin.vo.AdminUserVO;
+import com.hotstrip.linux.monitor.admin.vo.ServerVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -35,5 +37,10 @@ public class ServerServiceImpl implements ServerService {
         if (countRows < ids.size()) {
             log.error("delete server rows: {}/{}", countRows, ids.size());
         }
+    }
+
+    @Override
+    public ServerVO findById(int id) {
+        return ServerVO.buildVO(serverMapper.findById(id));
     }
 }
