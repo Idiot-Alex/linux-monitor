@@ -18,11 +18,74 @@
 
     <insert id="insert" parameterType="com.hotstrip.linux.monitor.admin.entity.ServerDO">
         insert into server
-        (id, host, user, password, port, create_time, update_time)
-        values
-        (#{id, jdbcType=INTEGER}, #{host, jdbcType=VARCHAR}, #{user, jdbcType=VARCHAR}, #{password, jdbcType=VARCHAR},
-        #{port, jdbcType=INTEGER}, #{createTime, jdbcType=TIMESTAMP}, #{updateTime, jdbcType=TIMESTAMP})
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            id,
+            <if test="host != null">
+                host,
+            </if>
+            <if test="user != null">
+                user,
+            </if>
+            <if test="password != null">
+                password,
+            </if>
+            <if test="port != null">
+                port,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{id,jdbcType=INTEGER},
+            <if test="host != null">
+                #{host, jdbcType=VARCHAR},
+            </if>
+            <if test="user != null">
+                #{user, jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                #{password, jdbcType=VARCHAR},
+            </if>
+            <if test="port != null">
+                #{port, jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                #{createTime, jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime, jdbcType=TIMESTAMP},
+            </if>
+        </trim>
     </insert>
+
+    <update id="update" parameterType="com.hotstrip.linux.monitor.admin.entity.ServerDO">
+        update server
+        <set>
+            <if test="host != null">
+                host = #{host, jdbcType=VARCHAR},
+            </if>
+            <if test="user != null">
+                user = #{user, jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                password = #{password, jdbcType=VARCHAR},
+            </if>
+            <if test="port != null">
+                port = #{port, jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime, jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime, jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id, jdbcType=INTEGER}
+    </update>
 
     <select id="findById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select
