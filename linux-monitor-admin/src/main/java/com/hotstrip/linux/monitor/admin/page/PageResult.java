@@ -1,6 +1,5 @@
 package com.hotstrip.linux.monitor.admin.page;
 
-import com.github.pagehelper.Page;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,7 +14,7 @@ import java.util.function.Supplier;
 @AllArgsConstructor
 public class PageResult<T> implements Serializable {
     private PageParams pageParams;
-    private List<T> list;
+    private List<T> dataList;
 
     /**
      * get PageResult

@@ -71,17 +71,17 @@
         select count(*)
         from admin_user
         where 1=1
-        <if test="name != null">
-            and name = #{name, jdbcType=VARCHAR}
+        <if test="user != null">
+            and user = #{user, jdbcType=VARCHAR}
         </if>
     </select>
 
     <select id="selectByQuery" parameterType="com.hotstrip.linux.monitor.admin.pojo.query.AdminUserQuery" resultMap="BaseResultMap">
-        select count(*)
+        select <include refid="Base_Column_List"/>
         from admin_user
         where 1=1
-        <if test="name != null">
-            and name = #{name, jdbcType=VARCHAR}
+        <if test="user != null">
+            and user = #{user, jdbcType=VARCHAR}
         </if>
         order by id desc
         <if test="pageParams != null">

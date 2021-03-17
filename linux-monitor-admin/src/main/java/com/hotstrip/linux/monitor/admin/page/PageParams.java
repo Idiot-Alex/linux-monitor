@@ -12,6 +12,9 @@ public class PageParams implements Serializable {
     private int totalCount;
 
     public PageParams() {
+        this.pageNo = 1;
+        this.pageSize = 10;
+        this.offset = (this.pageNo - 1) * this.pageSize;
     }
 
     public PageParams(int pageNo, int pageSize, int totalCount) {
