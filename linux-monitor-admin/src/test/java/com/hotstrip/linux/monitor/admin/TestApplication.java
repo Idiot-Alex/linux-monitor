@@ -1,5 +1,6 @@
 package com.hotstrip.linux.monitor.admin;
 
+import com.hotstrip.linux.monitor.common.utils.MD5Util;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,5 +17,6 @@ public class TestApplication {
     @Test
     public void test() {
         log.info("test Application...");
+        log.info("encode md5 :[{}]", MD5Util.encodeMD5("123456"));
     }
 }
