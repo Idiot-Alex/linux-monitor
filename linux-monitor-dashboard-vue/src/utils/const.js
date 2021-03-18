@@ -1,1 +1,1 @@
-export const COLLAPSE = 'COLLAPSE';
+export const $200 = 200;

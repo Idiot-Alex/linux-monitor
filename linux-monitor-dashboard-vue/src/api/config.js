@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Vue from 'vue';
 
 const domain = document.getElementById('domainPath').value;
 
@@ -27,26 +28,26 @@ request.interceptors.response.use(response => {
   const res = response.data;
   // if request failed
   if (res.code !== 200) {
-    this.$notify.error({
+    Vue.prototype.$notify.error({
       title: 'Request Failed',
       message: res.message,
-      offset: 150
+      offset: 100
     });
   }
   return res;
 }, error => {
   const { status, statusText } = error;
   if (!status) {
-    this.$notify.warning({
+    Vue.prototype.$notify.warning({
       title: 'Network Error',
       message: 'please check your network...',
-      offset: 150
+      offset: 100
     });
   } else {
-    this.$notify.error({
+    Vue.prototype.$notify.error({
       title: status,
       message: statusText,
-      offset: 150
+      offset: 100
     });
   }
   return Promise.reject(error);
