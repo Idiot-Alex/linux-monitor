@@ -5,7 +5,11 @@
       <el-header>
         <top-header />
       </el-header>
-      <el-main>main</el-main>
+      <el-main>
+        <keep-alive>
+          <router-view/>
+        </keep-alive>
+      </el-main>
     </el-container>
   </el-container>
 </template>

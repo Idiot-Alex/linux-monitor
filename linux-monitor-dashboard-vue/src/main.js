@@ -13,8 +13,8 @@ import router from './router';
 import store from './store';
 
 Vue.config.productionTip = false;
+Vue.prototype.$notify = Notification;
 Vue.use(Button);
-Vue.use(Notification);
 Vue.use(Container);
 Vue.use(Header);
 Vue.use(Aside);
