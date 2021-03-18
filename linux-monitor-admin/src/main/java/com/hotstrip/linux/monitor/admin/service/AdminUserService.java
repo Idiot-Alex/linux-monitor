@@ -36,4 +36,12 @@ public interface AdminUserService {
      * @return {@linkplain PageResult}
      */
     PageResult<AdminUserVO> listByPage(AdminUserQuery adminUserQuery);
+
+    /**
+     * AdminUser login
+     * @param userName
+     * @param password
+     * @return {@linkplain AdminUserVO}
+     */
+    AdminUserVO login(String userName, String password);
 }

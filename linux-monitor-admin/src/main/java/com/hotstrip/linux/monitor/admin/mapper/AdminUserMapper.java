@@ -55,4 +55,13 @@ public interface AdminUserMapper {
      * @return {@linkplain List}
      */
     List<AdminUserDO> selectByQuery(AdminUserQuery adminUserQuery);
+
+    /**
+     * find AdminUser by userName and password
+     * @param userName
+     * @param password
+     * @return {@linkplain AdminUserDO}
+     */
+    @Select("select * from admin_user where user_name = #{userName} and password = #{password}")
+    AdminUserDO findByUserNameAndPassword(@Param("userName") String userName, @Param("password") String password);
 }

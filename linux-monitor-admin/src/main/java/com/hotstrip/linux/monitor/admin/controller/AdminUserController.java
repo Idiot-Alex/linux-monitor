@@ -26,6 +26,23 @@ public class AdminUserController {
     private AdminUserService adminUserService;
 
     /**
+     * login with userName and password
+     * @param userName
+     * @param password
+     * @return {@linkplain Result}
+     */
+    public Result login(final String userName,
+                        final String password) {
+        Objects.requireNonNull(userName);
+        Objects.requireNonNull(password);
+        AdminUserVO adminUserVO = adminUserService.login(userName, password);
+        if (Optional.ofNullable(adminUserVO).isPresent()) {
+            return Result.success(Consts.SUCCESS_MESSAGE, adminUserVO);
+        }
+        return Result.error(Consts.ERROR, Consts.ERROR_MESSAGE);
+    }
+
+    /**
      * get AdminUserList api
      * @param pageNo pageNo
      * @param pageSize  pageSize
@@ -87,7 +104,6 @@ public class AdminUserController {
         Objects.requireNonNull(id);
         Objects.requireNonNull(adminUserDTO);
         adminUserDTO.setId(id);
-        // the password need to be encode
         int rows = adminUserService.insertOrUpdate(adminUserDTO);
         if (rows > 0) {
             return Result.success(Consts.SUCCESS_MESSAGE);

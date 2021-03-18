@@ -1,6 +1,7 @@
 package com.hotstrip.linux.monitor.admin.pojo.entity;
 
 import com.hotstrip.linux.monitor.admin.pojo.dto.AdminUserDTO;
+import com.hotstrip.linux.monitor.common.utils.MD5Util;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -28,7 +29,8 @@ public class AdminUserDO extends BaseDO {
             Timestamp currentTime = new Timestamp(System.currentTimeMillis());
             AdminUserDO adminUserDO = AdminUserDO.builder()
                     .userName(item.getUserName())
-                    .password(item.getPassword())
+                    // the password need to be encode
+                    .password(MD5Util.encodeMD5(item.getPassword()))
                     .build();
             if (adminUserDTO.getId() == null) {
                 adminUserDO.setCreateTime(currentTime);

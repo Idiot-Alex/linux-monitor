@@ -8,6 +8,7 @@ import com.hotstrip.linux.monitor.admin.pojo.entity.AdminUserDO;
 import com.hotstrip.linux.monitor.admin.pojo.query.AdminUserQuery;
 import com.hotstrip.linux.monitor.admin.pojo.vo.AdminUserVO;
 import com.hotstrip.linux.monitor.admin.service.AdminUserService;
+import com.hotstrip.linux.monitor.common.utils.MD5Util;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -51,5 +52,11 @@ public class AdminUserServiceImpl implements AdminUserService {
         int count = adminUserMapper.countByQuery(adminUserQuery);
         return PageResult.result(pageParams, count, () -> adminUserMapper.selectByQuery(adminUserQuery)
                 .stream().map(item -> AdminUserVO.buildVO(item)).collect(Collectors.toList()));
+    }
+
+    @Override
+    public AdminUserVO login(final String userName, final String password) {
+        final String encodePassword = MD5Util.encodeMD5(password);
+        return AdminUserVO.buildVO(adminUserMapper.findByUserNameAndPassword(userName, encodePassword));
     }
 }
