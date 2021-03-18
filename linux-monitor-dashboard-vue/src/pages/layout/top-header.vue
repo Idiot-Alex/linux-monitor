@@ -1,14 +1,26 @@
 <template>
   <div class="header">
-    <i class="el-icon-s-fold collapse"></i>
-    <i class="el-icon-s-unfold collapse"></i>
+    <i v-if="getIsCollapse" class="el-icon-s-unfold collapse" @click="collapse"></i>
+    <i v-else class="el-icon-s-fold collapse" @click="collapse"></i>
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex';
 export default {
   data() {
     return {
 
+    }
+  },
+  computed: {
+    ...mapGetters([
+      'getIsCollapse'
+    ])
+  },
+  methods: {
+    // collapse aside menu
+    collapse() {
+      this.$store.dispatch('collapse');
     }
   }
 }
@@ -22,6 +34,7 @@ export default {
 .header {
   height: 60px;
   background-color: #545c64;
+  z-index: 99;
 }
 .collapse {
   line-height: 60px;

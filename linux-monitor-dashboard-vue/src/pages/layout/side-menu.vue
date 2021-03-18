@@ -1,10 +1,8 @@
 <template>
   <el-menu
-    :collapse="isCollapse"
+    :collapse="getIsCollapse"
     default-active="2"
     class="el-menu-vertical"
-    @open="handleOpen"
-    @close="handleClose"
     background-color="#545c64"
     text-color="#fff"
     active-text-color="#ffd04b">
@@ -41,17 +39,22 @@
   </el-menu>
 </template>
 <script>
+import { mapGetters } from 'vuex';
 export default {
   data() {
     return {
-      isCollapse: false
     }
+  },
+  computed: {
+    ...mapGetters([
+      'getIsCollapse'
+    ])
   }
 }
 </script>
-<style scoped>
+<style>
 .el-menu-vertical {
-  width: 200px;
+  max-width: 200px;
   height: 100vh;
 }
 </style>

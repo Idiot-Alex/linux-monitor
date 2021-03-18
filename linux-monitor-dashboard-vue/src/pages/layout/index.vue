@@ -1,8 +1,6 @@
 <template>
   <el-container>
-    <el-aside class="aside">
-      <side-menu />
-    </el-aside>
+    <side-menu />
     <el-container>
       <el-header>
         <top-header />
@@ -27,7 +25,5 @@ export default {
 }
 </script>
 <style>
-.aside {
-  width: auto !important;
-}
+
 </style>
