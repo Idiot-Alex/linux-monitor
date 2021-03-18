@@ -31,6 +31,7 @@ public class AdminUserController {
      * @param password
      * @return {@linkplain Result}
      */
+    @GetMapping("/login")
     public Result login(final String userName,
                         final String password) {
         Objects.requireNonNull(userName);
