@@ -56,5 +56,9 @@ export default {
 .el-menu-vertical {
   max-width: 200px;
   height: 100vh;
+  transition: 0.2s;
 }
+.el-menu-vertical:not(.el-menu--collapse) {
+    width: 200px;
+  }
 </style>
