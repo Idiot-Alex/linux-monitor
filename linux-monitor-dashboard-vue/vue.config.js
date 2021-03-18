@@ -1,7 +1,7 @@
 module.exports = {
   // 代理设置
   devServer: {
-    port: 3000,
+    port: 3001,
     proxy: {
       '/*': {
         target: 'http://localhost:8080',

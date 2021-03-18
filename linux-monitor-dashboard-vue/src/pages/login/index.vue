@@ -30,7 +30,13 @@ export default {
   methods: {
     onSubmit() {
       adminUserLogin(this.form).then(res => {
-        console.log(res)
+        if (res.code === 200) {
+          this.$notify.success({
+            title: 'Success',
+            message: res.message,
+            offset: 100
+          })
+        }
       })
     }
   }
