@@ -6,16 +6,16 @@ import com.jcraft.jsch.Session;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentMap;
 
-public class SessionManage {
+public class SSHSessionManage {
 
-    private SessionManage() {
+    private SSHSessionManage() {
     }
 
     private static class SessionManageHolder {
-        private static final SessionManage INSTANCE = new SessionManage();
+        private static final SSHSessionManage INSTANCE = new SSHSessionManage();
     }
 
-    public static final SessionManage getInstance() {
+    public static final SSHSessionManage getInstance() {
         return SessionManageHolder.INSTANCE;
     }
 

@@ -8,7 +8,7 @@ import com.jcraft.jsch.Session;
  * this is a SSH session manage, provied some method to manage ssh session
  * such as open, close...
  */
-public interface SessionService {
+public interface SSHSessionService {
 
     // open session
     Session openSession(HostDO hostDO);

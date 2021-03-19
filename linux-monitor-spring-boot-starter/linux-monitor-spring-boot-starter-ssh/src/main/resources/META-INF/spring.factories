@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.hotstrip.linux.monitor.spring.boot.ssh.SSHConfiguration

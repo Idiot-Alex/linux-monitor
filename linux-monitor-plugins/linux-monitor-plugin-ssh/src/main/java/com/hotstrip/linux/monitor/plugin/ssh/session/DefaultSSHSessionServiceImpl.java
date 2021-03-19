@@ -6,7 +6,7 @@ import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
 
-public class SessionServiceImpl implements SessionService {
+public class DefaultSSHSessionServiceImpl implements SSHSessionService {
 
     public Session openSession(HostDO hostDO) {
         JSch jSch = JSchClient.getInstance();
@@ -17,7 +17,7 @@ public class SessionServiceImpl implements SessionService {
             session.connect(3000);
             // add SESSION_MAP
             if (session.isConnected()) {
-                SessionManage.getInstance().cacheSessionData(session);
+                SSHSessionManage.getInstance().cacheSessionData(session);
             }
             return session;
         } catch (JSchException e) {
@@ -30,7 +30,7 @@ public class SessionServiceImpl implements SessionService {
         if (null != session) {
             session.disconnect();
             // remove SESSION_MAP
-            SessionManage.getInstance().removeSessionData(session);
+            SSHSessionManage.getInstance().removeSessionData(session);
         }
     }
 }

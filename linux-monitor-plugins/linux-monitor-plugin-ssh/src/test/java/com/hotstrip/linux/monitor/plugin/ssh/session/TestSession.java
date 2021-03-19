@@ -1,7 +1,6 @@
 package com.hotstrip.linux.monitor.plugin.ssh.session;
 
 import com.hotstrip.linux.monitor.common.pojo.HostDO;
-import com.hotstrip.linux.monitor.common.pojo.SystemLoadAvgDO;
 import com.hotstrip.linux.monitor.plugin.ssh.executor.ChannelExecutorImpl;
 import com.hotstrip.linux.monitor.plugin.ssh.executor.Executor;
 import com.hotstrip.linux.monitor.plugin.ssh.executor.handler.LoadAvgHandler;
@@ -14,15 +13,11 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.util.Scanner;
-
 @Slf4j
 public class TestSession {
     private HostDO hostDO;
 
-    private SessionService sessionService;
+    private SSHSessionService sessionService;
 
     @Before
     public void setup() {
@@ -33,7 +28,7 @@ public class TestSession {
                 .user("test")
                 .password("123456")
                 .build();
-        this.sessionService = new SessionServiceImpl();
+        this.sessionService = new DefaultSSHSessionServiceImpl();
         testOpenSession();
     }
 
@@ -45,8 +40,8 @@ public class TestSession {
 
     @Test
     public void testExecChannel() {
-        final String key = SessionManage.getInstance().getSessionKey(hostDO.getHost(), hostDO.getUser());
-        final Session session = SessionManage.getInstance().getSessionData(key);
+        final String key = SSHSessionManage.getInstance().getSessionKey(hostDO.getHost(), hostDO.getUser());
+        final Session session = SSHSessionManage.getInstance().getSessionData(key);
         try {
             Channel channel = session.openChannel(ConstPool.EXEC_CHANNEL);
             // 获取 Mac OS 系统的平均负载命令 uptime | cut -d":" -f4- | sed s/,//g
