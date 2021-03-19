@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS `server` (
   `id` int NOT NULL AUTO_INCREMENT COMMENT 'primary key id',
   `host` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'server host',
   `user` varchar(128) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'server user',
-  `password` varchar(128) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'server user',
+  `password` varchar(128) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'user password',
   `port` int NOT NULL COMMENT 'server port',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'create time',
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'update time',
