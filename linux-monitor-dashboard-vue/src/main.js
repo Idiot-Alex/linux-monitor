@@ -8,6 +8,7 @@ import {
   Container, Header, Aside, Main, Card,
   Menu, Submenu, MenuItem, MenuItemGroup,
   Form, FormItem, Input,
+  Row, Col,
 } from 'element-ui';
 
 import router from './router';
@@ -29,6 +30,8 @@ Vue.use(MenuItemGroup);
 Vue.use(Form);
 Vue.use(FormItem);
 Vue.use(Input);
+Vue.use(Row);
+Vue.use(Col);
 
 new Vue({
   router,
