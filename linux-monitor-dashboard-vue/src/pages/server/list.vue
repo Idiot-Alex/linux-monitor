@@ -12,7 +12,7 @@
     <!-- server status card -->
     <el-row class="server-cards">
       <el-card v-for="server in serverList" :key="server.id">
-        ...
+        {{server.host}}
       </el-card>
     </el-row>
   </div>
@@ -25,22 +25,19 @@ export default {
       serverList: [],
       listQuery: {
         pageNo: 1,
-        pageSize: 10,
-        host: ''
+        pageSize: 10
       }
     }
   },
   created() {
     this.loadData();
-    console.log(this.serverList)
   },
   methods: {
     // load server list
     loadData() {
       getServerList(this.listQuery).then(res => {
-        console.log(res)
         if (res.code === 200) {
-          this.serverList = res.dataList;
+          this.serverList = res.data.dataList;
         }
       })
     }
