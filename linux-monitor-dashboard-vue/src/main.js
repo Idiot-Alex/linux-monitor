@@ -12,6 +12,7 @@ import {
 
 import router from './router';
 import store from './store';
+import './router/auth';
 
 Vue.config.productionTip = false;
 Vue.prototype.$notify = Notification;

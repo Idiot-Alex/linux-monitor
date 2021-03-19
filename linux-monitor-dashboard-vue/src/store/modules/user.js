@@ -14,7 +14,7 @@ const user = {
     login({commit}, data) {
       return new Promise((resolve) => {
         commit('setUserInfo', data);
-        localStorage.setItem(USER_KEY, JSON.stringify(res.data));
+        localStorage.setItem(USER_KEY, JSON.stringify(data));
         resolve();
       });
     }

@@ -34,12 +34,15 @@ export default {
           this.$notify.success({
             title: 'Success',
             message: res.message,
-            offset: 100
+            offset: 100,
+            duration: 2 * 1000
           })
-          // go to dashboard
-          this.$store.dispatch('login', res.data).then(() => {
-            this.$router.push({ path: '/' });
-          })
+          setTimeout(() => {
+            // go to dashboard
+            this.$store.dispatch('login', res.data).then(() => {
+              this.$router.push({ path: '/' });
+            })
+          }, 1000);
         }
       })
     }
