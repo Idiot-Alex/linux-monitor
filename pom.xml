@@ -14,6 +14,7 @@
         <module>linux-monitor-plugins</module>
         <module>linux-monitor-common</module>
         <module>linux-monitor-data-cache</module>
+        <module>linux-monitor-spring-boot-starter</module>
     </modules>
 
     <properties>
