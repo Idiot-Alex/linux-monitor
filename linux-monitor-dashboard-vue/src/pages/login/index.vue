@@ -36,6 +36,10 @@ export default {
             message: res.message,
             offset: 100
           })
+          // go to dashboard
+          this.$store.dispatch('login', res.data).then(() => {
+            this.$router.push({ path: '/' });
+          })
         }
       })
     }
