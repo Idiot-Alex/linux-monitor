@@ -17,8 +17,13 @@
     <dependencies>
         <dependency>
             <groupId>com.hotstrip</groupId>
-            <artifactId>linux-monitor-dada-cache-api</artifactId>
+            <artifactId>linux-monitor-common</artifactId>
             <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
         </dependency>
         <!-- jsch for ssh2 -->
         <dependency>
