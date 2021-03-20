@@ -8,8 +8,14 @@ import com.hotstrip.linux.monitor.plugin.api.enums.PluginEnum;
  * SSH Plugin
  */
 public class LinuxMonitorSSHPlugin implements LinuxMonitorPlugin {
+
     @Override
     public String named() {
         return PluginEnum.SSH.getName();
+    }
+
+    @Override
+    public void execute() {
+
     }
 }

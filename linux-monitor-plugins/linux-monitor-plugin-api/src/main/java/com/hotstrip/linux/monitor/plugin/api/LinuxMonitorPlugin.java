@@ -10,7 +10,10 @@ public interface LinuxMonitorPlugin {
      * plugin name
      * @return
      */
-    default String named() {
-        return "";
-    }
+    String named();
+
+    /**
+     * plugin execute
+     */
+    void execute();
 }
