@@ -17,6 +17,11 @@
     <dependencies>
         <dependency>
             <groupId>com.hotstrip</groupId>
+            <artifactId>linux-monitor-plugin-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.hotstrip</groupId>
             <artifactId>linux-monitor-common</artifactId>
             <version>${project.version}</version>
         </dependency>

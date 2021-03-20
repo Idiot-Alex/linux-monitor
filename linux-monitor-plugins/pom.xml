@@ -13,6 +13,7 @@
 
     <modules>
         <module>linux-monitor-plugin-ssh</module>
+        <module>linux-monitor-plugin-api</module>
     </modules>
 
     <dependencyManagement>
