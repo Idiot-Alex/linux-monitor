@@ -17,4 +17,5 @@ public class ServerDTO implements Serializable {
     private String user;
     private String password;
     private Integer port;
+
 }

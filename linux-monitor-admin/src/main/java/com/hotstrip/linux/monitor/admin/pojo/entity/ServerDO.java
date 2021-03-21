@@ -1,6 +1,5 @@
 package com.hotstrip.linux.monitor.admin.pojo.entity;
 
-import com.hotstrip.linux.monitor.admin.pojo.dto.AdminUserDTO;
 import com.hotstrip.linux.monitor.admin.pojo.dto.ServerDTO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

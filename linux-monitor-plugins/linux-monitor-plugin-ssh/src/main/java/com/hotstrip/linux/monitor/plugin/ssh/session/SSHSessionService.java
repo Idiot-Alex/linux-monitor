@@ -1,6 +1,6 @@
 package com.hotstrip.linux.monitor.plugin.ssh.session;
 
-import com.hotstrip.linux.monitor.common.pojo.HostDO;
+import com.hotstrip.linux.monitor.common.pojo.ServerData;
 import com.jcraft.jsch.Session;
 
 /**
@@ -11,7 +11,7 @@ import com.jcraft.jsch.Session;
 public interface SSHSessionService {
 
     // open session
-    Session openSession(HostDO hostDO);
+    Session openSession(ServerData serverData);
 
 
     // close session

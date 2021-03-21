@@ -25,7 +25,7 @@ public class SSHClientService implements AutoCloseable {
             final List<Session> sessionList = SSHSessionManage.getInstance().getSessionList();
             for (Session session : sessionList) {
                 if (session.isConnected()) {
-                    log.info("schedule with fixed delay task...");
+                    log.info("schedule with fixed delay task...host: [{}]", session.getHost());
                 }
             }
         }, 10, 30, TimeUnit.SECONDS);

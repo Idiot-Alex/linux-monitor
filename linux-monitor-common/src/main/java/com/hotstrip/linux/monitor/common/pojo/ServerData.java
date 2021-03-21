@@ -1,15 +1,19 @@
 package com.hotstrip.linux.monitor.common.pojo;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Builder
-public class HostDO {
+public class ServerData {
+    private Integer id;
     private String host;
-    @Builder.Default
-    private int port = 22;
     private String user;
     private String password;
-    private String publicKey;
+    private Integer port;
+
 }

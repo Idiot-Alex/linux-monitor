@@ -1,6 +1,6 @@
 package com.hotstrip.linux.monitor.plugin.ssh.session;
 
-import com.hotstrip.linux.monitor.common.pojo.HostDO;
+import com.hotstrip.linux.monitor.common.pojo.ServerData;
 import com.hotstrip.linux.monitor.plugin.ssh.executor.ChannelExecutorImpl;
 import com.hotstrip.linux.monitor.plugin.ssh.executor.Executor;
 import com.hotstrip.linux.monitor.plugin.ssh.executor.handler.LoadAvgHandler;
@@ -15,7 +15,7 @@ import org.junit.Test;
 
 @Slf4j
 public class TestSession {
-    private HostDO hostDO;
+    private ServerData hostDO;
 
     private SSHSessionService sessionService;
 
@@ -23,7 +23,7 @@ public class TestSession {
     public void setup() {
         log.info("TestSession before...");
         // replace your host, user and password, if you want run this test pass
-        this.hostDO = HostDO.builder()
+        this.hostDO = ServerData.builder()
                 .host("127.0.0.1")
                 .user("test")
                 .password("123456")

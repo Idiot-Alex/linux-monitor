@@ -55,4 +55,7 @@ public interface ServerMapper {
      * @return {@linkplain List}
      */
     List<ServerDO> selectByQuery(ServerQuery serverQuery);
+
+    @Select("select * from server")
+    List<ServerDO> listAll();
 }

@@ -4,6 +4,7 @@ import com.hotstrip.linux.monitor.admin.page.PageResult;
 import com.hotstrip.linux.monitor.admin.pojo.dto.ServerDTO;
 import com.hotstrip.linux.monitor.admin.pojo.query.ServerQuery;
 import com.hotstrip.linux.monitor.admin.pojo.vo.ServerVO;
+import com.hotstrip.linux.monitor.common.pojo.ServerData;
 
 import java.util.List;
 
@@ -34,4 +35,10 @@ public interface ServerService {
      * @return {@linkplain PageResult}
      */
     PageResult<ServerVO> listByPage(ServerQuery serverQuery);
+
+    /**
+     * list all ServerData
+     * @return {@linkplain ServerData}
+     */
+    List<ServerData> listAll();
 }

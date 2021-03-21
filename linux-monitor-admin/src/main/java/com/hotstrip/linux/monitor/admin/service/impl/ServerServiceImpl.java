@@ -8,6 +8,8 @@ import com.hotstrip.linux.monitor.admin.pojo.entity.ServerDO;
 import com.hotstrip.linux.monitor.admin.pojo.query.ServerQuery;
 import com.hotstrip.linux.monitor.admin.pojo.vo.ServerVO;
 import com.hotstrip.linux.monitor.admin.service.ServerService;
+import com.hotstrip.linux.monitor.admin.transfer.ServerDataTransfer;
+import com.hotstrip.linux.monitor.common.pojo.ServerData;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -51,5 +53,12 @@ public class ServerServiceImpl implements ServerService {
         int count = serverMapper.countByQuery(serverQuery);
         return PageResult.result(pageParams, count, () -> serverMapper.selectByQuery(serverQuery)
                 .stream().map(item -> ServerVO.buildVO(item)).collect(Collectors.toList()));
+    }
+
+    @Override
+    public List<ServerData> listAll() {
+        return serverMapper.listAll().stream()
+                .map(ServerDataTransfer::transferData)
+                .collect(Collectors.toList());
     }
 }
