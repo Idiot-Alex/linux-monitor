@@ -33,7 +33,7 @@ public class TestSession {
     }
 
     public void testOpenSession() {
-        Session session = sessionService.openSession(hostDO);
+        Session session = sessionService.   openSession(hostDO);
         log.info("testOpenSession...session is connected: [{}]", session.isConnected());
         Assert.assertTrue(session.isConnected());
     }

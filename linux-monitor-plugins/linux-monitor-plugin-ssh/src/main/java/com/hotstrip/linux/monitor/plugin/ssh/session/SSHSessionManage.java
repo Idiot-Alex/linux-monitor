@@ -1,10 +1,13 @@
 package com.hotstrip.linux.monitor.plugin.ssh.session;
 
 import com.google.common.collect.Maps;
+import com.google.common.collect.Streams;
 import com.jcraft.jsch.Session;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentMap;
+import java.util.stream.Collectors;
 
 public class SSHSessionManage {
 
@@ -60,5 +63,13 @@ public class SSHSessionManage {
      */
     public Session getSessionData(final String key) {
         return SESSION_MAP.get(key);
+    }
+
+    /**
+     * get session map size
+     * @return
+     */
+    public List<Session> getSessionList() {
+        return SESSION_MAP.values().stream().collect(Collectors.toList());
     }
 }

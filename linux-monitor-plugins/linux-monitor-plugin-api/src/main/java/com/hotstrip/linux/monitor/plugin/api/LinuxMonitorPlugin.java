@@ -11,7 +11,7 @@ public interface LinuxMonitorPlugin {
      * @return
      */
     String named();
-
+    
     /**
      * plugin execute
      */

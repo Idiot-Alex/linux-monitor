@@ -1,8 +1,11 @@
 package com.hotstrip.linux.monitor.plugin.ssh;
 
 import com.hotstrip.linux.monitor.common.LinuxMonitorThreadFactory;
+import com.hotstrip.linux.monitor.plugin.ssh.session.SSHSessionManage;
+import com.jcraft.jsch.Session;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -18,9 +21,13 @@ public class SSHClientService implements AutoCloseable {
 
     public SSHClientService() {
         this.executor = new ScheduledThreadPoolExecutor(10, LinuxMonitorThreadFactory.create("ssh-client", true));
-
         this.executor.scheduleWithFixedDelay(() -> {
-            log.info("schedule with fixed delay task...");
+            final List<Session> sessionList = SSHSessionManage.getInstance().getSessionList();
+            for (Session session : sessionList) {
+                if (session.isConnected()) {
+                    log.info("schedule with fixed delay task...");
+                }
+            }
         }, 10, 30, TimeUnit.SECONDS);
     }
 
