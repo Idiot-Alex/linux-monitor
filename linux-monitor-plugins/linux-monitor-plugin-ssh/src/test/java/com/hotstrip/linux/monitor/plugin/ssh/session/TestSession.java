@@ -1,7 +1,7 @@
 package com.hotstrip.linux.monitor.plugin.ssh.session;
 
 import com.hotstrip.linux.monitor.common.pojo.ServerData;
-import com.hotstrip.linux.monitor.plugin.ssh.executor.ChannelExecutorImpl;
+import com.hotstrip.linux.monitor.plugin.ssh.executor.ChannelExecutor;
 import com.hotstrip.linux.monitor.plugin.ssh.executor.Executor;
 import com.hotstrip.linux.monitor.plugin.ssh.executor.handler.LoadAvgHandler;
 import com.jcraft.jsch.Channel;
@@ -47,7 +47,7 @@ public class TestSession {
             // 获取 Mac OS 系统的平均负载命令 uptime | cut -d":" -f4- | sed s/,//g
             ((ChannelExec) channel).setCommand("uptime | cut -d\":\" -f4- | sed s/,//g");
 
-            Executor executor = new ChannelExecutorImpl((ChannelExec) channel);
+            Executor executor = new ChannelExecutor((ChannelExec) channel);
             executor.execute(new LoadAvgHandler());
 
             sessionService.closeSession(session);

@@ -10,11 +10,11 @@ import java.io.IOException;
 import java.io.InputStream;
 
 @Slf4j
-public class ChannelExecutorImpl implements Executor {
+public class ChannelExecutor implements Executor {
 
     private ChannelExec channelExec;
 
-    public ChannelExecutorImpl(final ChannelExec channelExec) {
+    public ChannelExecutor(final ChannelExec channelExec) {
         this.channelExec = channelExec;
     }
 
