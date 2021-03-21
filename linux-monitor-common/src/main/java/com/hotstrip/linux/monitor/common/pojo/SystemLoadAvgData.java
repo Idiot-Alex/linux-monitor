@@ -8,7 +8,7 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @NoArgsConstructor
 //@EqualsAndHashCode(callSuper = true)
-public class SystemLoadAvgDO {
+public class SystemLoadAvgData {
 
     private String host;
     private Double one;

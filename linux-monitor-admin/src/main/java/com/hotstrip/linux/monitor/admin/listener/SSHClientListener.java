@@ -1,9 +1,7 @@
 package com.hotstrip.linux.monitor.admin.listener;
 
-import com.hotstrip.linux.monitor.admin.pojo.dto.ServerDTO;
 import com.hotstrip.linux.monitor.admin.service.ServerService;
 import com.hotstrip.linux.monitor.common.pojo.ServerData;
-import com.hotstrip.linux.monitor.plugin.ssh.SSHClientService;
 import com.hotstrip.linux.monitor.plugin.ssh.session.SSHSessionService;
 import org.springframework.boot.context.event.ApplicationStartedEvent;
 import org.springframework.context.ApplicationListener;

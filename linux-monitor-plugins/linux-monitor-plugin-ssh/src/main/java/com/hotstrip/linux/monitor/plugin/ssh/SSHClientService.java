@@ -32,6 +32,7 @@ public class SSHClientService implements AutoCloseable {
             final List<Session> sessionList = SSHSessionManage.getInstance().getSessionList();
             for (Session session : sessionList) {
                 if (session.isConnected()) {
+                    // 执行获取服务器状态的方法
                     log.info("schedule with fixed delay task...host: [{}]", session.getHost());
                     try {
                         Channel channel = session.openChannel(ConstPool.EXEC_CHANNEL);

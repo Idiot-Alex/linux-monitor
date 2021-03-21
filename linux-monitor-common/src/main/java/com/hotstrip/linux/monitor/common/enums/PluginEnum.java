@@ -1,8 +1,7 @@
-package com.hotstrip.linux.monitor.plugin.api.enums;
+package com.hotstrip.linux.monitor.common.enums;
 
 import java.util.Arrays;
 
-@Deprecated
 public enum PluginEnum {
     SSH("ssh"),
     WEBSOCKET("websocket"),
