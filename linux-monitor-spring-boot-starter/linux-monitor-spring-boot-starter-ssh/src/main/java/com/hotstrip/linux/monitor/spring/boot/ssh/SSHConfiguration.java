@@ -27,8 +27,7 @@ public class SSHConfiguration {
 
     @Bean
     public SSHClientBootstrap sshClientBootstrap(final DataChangedListener dataChangedListener) {
-        log.info(dataChangedListener.toString());
-        return new SSHClientBootstrap();
+        return new SSHClientBootstrap(dataChangedListener);
     }
 
 

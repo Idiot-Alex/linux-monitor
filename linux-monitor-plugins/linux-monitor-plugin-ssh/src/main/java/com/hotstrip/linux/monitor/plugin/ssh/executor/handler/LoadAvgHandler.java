@@ -15,7 +15,7 @@ import java.util.Scanner;
 public class LoadAvgHandler implements ExecutorHandler {
 
     @Override
-    public void handle(final ExecuteResult executeResult) {
+    public void handle(final ExecuteResult executeResult, final DataChangedListener dataChangedListener) {
         if (executeResult.getStatus() != Consts.EXIT_STATUS_0) {
             log.error("command exec exit code: [{}]", executeResult.getStatus());
             return;
@@ -33,7 +33,7 @@ public class LoadAvgHandler implements ExecutorHandler {
                 .five(five)
                 .fifteen(fifteen)
                 .build();
-        serverStatus.registerLister(new SSHDataChangedListener());
+        serverStatus.registerLister(dataChangedListener);
 
         serverStatus.dataChanged();
     }
