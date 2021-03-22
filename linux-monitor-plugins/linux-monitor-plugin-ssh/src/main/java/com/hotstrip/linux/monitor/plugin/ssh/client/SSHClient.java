@@ -1,6 +1,5 @@
 package com.hotstrip.linux.monitor.plugin.ssh.client;
 
-import com.hotstrip.linux.monitor.common.listener.DataChangedListener;
 import com.hotstrip.linux.monitor.common.listener.ShellResultListener;
 import com.hotstrip.linux.monitor.plugin.ssh.enums.LinuxCommandEnum;
 import com.hotstrip.linux.monitor.plugin.ssh.executor.ChannelExecutor;

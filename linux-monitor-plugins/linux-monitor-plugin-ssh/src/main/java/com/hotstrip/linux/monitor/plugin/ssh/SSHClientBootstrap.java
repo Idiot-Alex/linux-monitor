@@ -1,7 +1,6 @@
 package com.hotstrip.linux.monitor.plugin.ssh;
 
 import com.hotstrip.linux.monitor.common.LinuxMonitorThreadFactory;
-import com.hotstrip.linux.monitor.common.listener.DataChangedListener;
 import com.hotstrip.linux.monitor.common.listener.ShellResultListener;
 import com.hotstrip.linux.monitor.plugin.ssh.client.SSHClient;
 import com.hotstrip.linux.monitor.plugin.ssh.session.SSHSessionManage;

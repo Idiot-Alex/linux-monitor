@@ -1,10 +1,8 @@
 package com.hotstrip.linux.monitor.spring.boot.ssh;
 
-import com.hotstrip.linux.monitor.common.listener.DataChangedListener;
 import com.hotstrip.linux.monitor.common.listener.ShellResultListener;
 import com.hotstrip.linux.monitor.plugin.ssh.SSHClientBootstrap;
 import com.hotstrip.linux.monitor.plugin.ssh.listener.DefaultShellResultListener;
-import com.hotstrip.linux.monitor.plugin.ssh.listener.SSHDataChangedListener;
 import com.hotstrip.linux.monitor.plugin.ssh.session.DefaultSSHSessionServiceImpl;
 import com.hotstrip.linux.monitor.plugin.ssh.session.SSHSessionService;
 import lombok.extern.slf4j.Slf4j;

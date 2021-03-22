@@ -1,12 +1,9 @@
 package com.hotstrip.linux.monitor.plugin.ssh.executor.handler;
 
 import com.hotstrip.linux.monitor.common.Consts;
-import com.hotstrip.linux.monitor.common.listener.DataChangedListener;
-import com.hotstrip.linux.monitor.common.listener.ServerStatus;
 import com.hotstrip.linux.monitor.common.listener.ShellResultListener;
 import com.hotstrip.linux.monitor.common.pojo.LoadAvgData;
 import com.hotstrip.linux.monitor.plugin.ssh.executor.ExecuteResult;
-import com.hotstrip.linux.monitor.plugin.ssh.listener.SSHDataChangedListener;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.ByteArrayInputStream;
