@@ -1,6 +1,5 @@
 package com.hotstrip.linux.monitor.plugin.ssh.executor.handler;
 
-import com.hotstrip.linux.monitor.common.Consts;
 import com.hotstrip.linux.monitor.common.listener.ShellResultListener;
 import com.hotstrip.linux.monitor.common.pojo.OSNameData;
 import com.hotstrip.linux.monitor.plugin.ssh.executor.ExecuteResult;
@@ -14,7 +13,7 @@ import java.util.Scanner;
 public class OSNameHandler implements ExecutorHandler {
     @Override
     public void handle(ExecuteResult executeResult, ShellResultListener shellResultListener) {
-        if (executeResult.getStatus() != Consts.EXIT_STATUS_0) {
+        if (!executeResult.success()) {
             log.error("command exec exit code: [{}], result: [{}]", executeResult.getStatus(), executeResult.getResult());
             return;
         }

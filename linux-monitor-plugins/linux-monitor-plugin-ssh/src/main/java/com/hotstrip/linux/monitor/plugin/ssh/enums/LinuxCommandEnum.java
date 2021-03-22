@@ -11,7 +11,8 @@ import lombok.NoArgsConstructor;
 public enum LinuxCommandEnum {
 
     OS_NAME(ConstPool.UNAME),
-    LOAD_AVG(ConstPool.LINUX_LOAD_AVG)
+    LOAD_AVG(ConstPool.LINUX_LOAD_AVG),
+    CPU_CORES(ConstPool.LINUX_CPU_CORES),
     ;
 
     private String command;

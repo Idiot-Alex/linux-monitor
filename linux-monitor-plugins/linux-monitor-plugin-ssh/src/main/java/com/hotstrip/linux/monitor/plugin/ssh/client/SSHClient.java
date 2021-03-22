@@ -4,6 +4,7 @@ import com.hotstrip.linux.monitor.common.listener.ShellResultListener;
 import com.hotstrip.linux.monitor.plugin.ssh.enums.LinuxCommandEnum;
 import com.hotstrip.linux.monitor.plugin.ssh.executor.ChannelExecutor;
 import com.hotstrip.linux.monitor.plugin.ssh.executor.Executor;
+import com.hotstrip.linux.monitor.plugin.ssh.executor.handler.CpuCoresHandler;
 import com.hotstrip.linux.monitor.plugin.ssh.executor.handler.LoadAvgHandler;
 import com.hotstrip.linux.monitor.plugin.ssh.executor.handler.OSNameHandler;
 import com.hotstrip.linux.monitor.plugin.ssh.session.ConstPool;
@@ -45,6 +46,7 @@ public class SSHClient {
     private void addExecutors() {
         Optional.ofNullable(getOSNameExecutor()).ifPresent(executor -> this.executorList.add(executor));
         Optional.ofNullable(getLoadAvgExecutor()).ifPresent(executor -> this.executorList.add(executor));
+        Optional.ofNullable(getCpuCoresExecutor()).ifPresent(executor -> this.executorList.add(executor));
     }
 
     /**
@@ -72,6 +74,22 @@ public class SSHClient {
             Channel channel = session.openChannel(ConstPool.EXEC_CHANNEL);
             ((ChannelExec) channel).setCommand(LinuxCommandEnum.LOAD_AVG.getCommand());
             Executor executor = new ChannelExecutor((ChannelExec) channel, this.shellResultListener, new LoadAvgHandler());
+            return executor;
+        } catch (JSchException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+     * get cpu cores Executor
+     * @return
+     */
+    private Executor getCpuCoresExecutor() {
+        try {
+            Channel channel = session.openChannel(ConstPool.EXEC_CHANNEL);
+            ((ChannelExec) channel).setCommand(LinuxCommandEnum.CPU_CORES.getCommand());
+            Executor executor = new ChannelExecutor((ChannelExec) channel, this.shellResultListener, new CpuCoresHandler());
             return executor;
         } catch (JSchException e) {
             e.printStackTrace();
