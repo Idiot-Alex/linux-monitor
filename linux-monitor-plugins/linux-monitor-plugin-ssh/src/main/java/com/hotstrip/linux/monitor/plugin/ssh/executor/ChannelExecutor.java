@@ -1,6 +1,7 @@
 package com.hotstrip.linux.monitor.plugin.ssh.executor;
 
 import com.hotstrip.linux.monitor.common.listener.DataChangedListener;
+import com.hotstrip.linux.monitor.common.listener.ShellResultListener;
 import com.hotstrip.linux.monitor.plugin.ssh.executor.handler.ExecutorHandler;
 import com.hotstrip.linux.monitor.plugin.ssh.utils.InputStreamUtil;
 import com.jcraft.jsch.ChannelExec;
@@ -15,13 +16,15 @@ public class ChannelExecutor implements Executor {
 
     private ChannelExec channelExec;
 
-    private DataChangedListener dataChangedListener;
+    private ShellResultListener shellResultListener;
 
     private ExecutorHandler executorHandler;
 
-    public ChannelExecutor(final ChannelExec channelExec, final DataChangedListener dataChangedListener, final ExecutorHandler executorHandler) {
+    public ChannelExecutor(final ChannelExec channelExec,
+                           final ShellResultListener shellResultListener,
+                           final ExecutorHandler executorHandler) {
         this.channelExec = channelExec;
-        this.dataChangedListener = dataChangedListener;
+        this.shellResultListener = shellResultListener;
         this.executorHandler = executorHandler;
     }
 
@@ -50,6 +53,6 @@ public class ChannelExecutor implements Executor {
         } finally {
             this.channelExec.disconnect();
         }
-        this.executorHandler.handle(executeResult, this.dataChangedListener);
+        this.executorHandler.handle(executeResult, this.shellResultListener);
     }
 }

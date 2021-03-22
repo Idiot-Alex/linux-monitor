@@ -3,6 +3,8 @@ package com.hotstrip.linux.monitor.plugin.ssh.executor.handler;
 import com.hotstrip.linux.monitor.common.Consts;
 import com.hotstrip.linux.monitor.common.listener.DataChangedListener;
 import com.hotstrip.linux.monitor.common.listener.ServerStatus;
+import com.hotstrip.linux.monitor.common.listener.ShellResultListener;
+import com.hotstrip.linux.monitor.common.pojo.LoadAvgData;
 import com.hotstrip.linux.monitor.plugin.ssh.executor.ExecuteResult;
 import com.hotstrip.linux.monitor.plugin.ssh.listener.SSHDataChangedListener;
 import lombok.extern.slf4j.Slf4j;
@@ -15,9 +17,9 @@ import java.util.Scanner;
 public class LoadAvgHandler implements ExecutorHandler {
 
     @Override
-    public void handle(final ExecuteResult executeResult, final DataChangedListener dataChangedListener) {
+    public void handle(final ExecuteResult executeResult, final ShellResultListener shellResultListener) {
         if (executeResult.getStatus() != Consts.EXIT_STATUS_0) {
-            log.error("command exec exit code: [{}]", executeResult.getStatus());
+            log.error("command exec exit code: [{}], result: [{}]", executeResult.getStatus(), executeResult.getResult());
             return;
         }
         InputStream is = new ByteArrayInputStream(executeResult.getResult().getBytes());
@@ -27,14 +29,11 @@ public class LoadAvgHandler implements ExecutorHandler {
         final double five = scanner.nextDouble();
         final double fifteen = scanner.nextDouble();
 
-        ServerStatus serverStatus = ServerStatus.builder()
+        shellResultListener.loadAvg(LoadAvgData.builder()
                 .host(executeResult.getHost())
                 .one(one)
                 .five(five)
                 .fifteen(fifteen)
-                .build();
-        serverStatus.registerLister(dataChangedListener);
-
-        serverStatus.dataChanged();
+                .build());
     }
 }

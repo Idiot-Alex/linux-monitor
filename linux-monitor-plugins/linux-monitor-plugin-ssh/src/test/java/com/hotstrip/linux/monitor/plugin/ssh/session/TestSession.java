@@ -4,6 +4,7 @@ import com.hotstrip.linux.monitor.common.pojo.ServerData;
 import com.hotstrip.linux.monitor.plugin.ssh.executor.ChannelExecutor;
 import com.hotstrip.linux.monitor.plugin.ssh.executor.Executor;
 import com.hotstrip.linux.monitor.plugin.ssh.executor.handler.LoadAvgHandler;
+import com.hotstrip.linux.monitor.plugin.ssh.listener.DefaultShellResultListener;
 import com.hotstrip.linux.monitor.plugin.ssh.listener.SSHDataChangedListener;
 import com.jcraft.jsch.Channel;
 import com.jcraft.jsch.ChannelExec;
@@ -46,9 +47,10 @@ public class TestSession {
         try {
             Channel channel = session.openChannel(ConstPool.EXEC_CHANNEL);
             // 获取 Mac OS 系统的平均负载命令 uptime | cut -d":" -f4- | sed s/,//g
-            ((ChannelExec) channel).setCommand("uptime | cut -d\":\" -f4- | sed s/,//g");
+//            ((ChannelExec) channel).setCommand("uptime | cut -d\":\" -f4- | sed s/,//g");
+            ((ChannelExec) channel).setCommand("uname");
 
-            Executor executor = new ChannelExecutor((ChannelExec) channel,new SSHDataChangedListener(), new LoadAvgHandler());
+            Executor executor = new ChannelExecutor((ChannelExec) channel, new DefaultShellResultListener(), new LoadAvgHandler());
             executor.execute();
 
             sessionService.closeSession(session);
