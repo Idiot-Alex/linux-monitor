@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface DataChangedListener {
 
-    default void dataChanged(List<ServerData> serverDataList) {
+    default void dataChanged(DataChangedEvent dataChangedEvent) {
 
     }
 }

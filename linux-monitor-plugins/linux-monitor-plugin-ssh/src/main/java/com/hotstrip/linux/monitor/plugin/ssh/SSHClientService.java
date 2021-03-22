@@ -1,6 +1,7 @@
 package com.hotstrip.linux.monitor.plugin.ssh;
 
 import com.hotstrip.linux.monitor.common.LinuxMonitorThreadFactory;
+import com.hotstrip.linux.monitor.common.listener.ServerStatus;
 import com.hotstrip.linux.monitor.plugin.ssh.executor.ChannelExecutor;
 import com.hotstrip.linux.monitor.plugin.ssh.executor.Executor;
 import com.hotstrip.linux.monitor.plugin.ssh.executor.handler.LoadAvgHandler;
