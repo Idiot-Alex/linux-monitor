@@ -1,5 +1,6 @@
 package com.hotstrip.linux.monitor.plugin.ssh.client;
 
+import com.hotstrip.linux.monitor.common.listener.DataChangedListener;
 import com.hotstrip.linux.monitor.plugin.ssh.executor.ChannelExecutor;
 import com.hotstrip.linux.monitor.plugin.ssh.executor.Executor;
 import com.hotstrip.linux.monitor.plugin.ssh.executor.handler.LoadAvgHandler;
@@ -8,10 +9,12 @@ import com.jcraft.jsch.Channel;
 import com.jcraft.jsch.ChannelExec;
 import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.LinkedList;
 import java.util.List;
 
+@Slf4j
 public class SSHClient {
     private Session session;
     private List<Executor> executorList = new LinkedList<>();
@@ -22,6 +25,9 @@ public class SSHClient {
         addExecutors();
     }
 
+    /**
+     * add Executors
+     */
     private void addExecutors() {
         try {
             Channel channel = session.openChannel(ConstPool.EXEC_CHANNEL);
@@ -35,6 +41,9 @@ public class SSHClient {
         }
     }
 
+    /**
+     * do execute
+     */
     public void doExecute() {
         for (Executor executor : executorList) {
             executor.execute();

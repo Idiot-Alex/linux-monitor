@@ -1,6 +1,7 @@
 package com.hotstrip.linux.monitor.plugin.ssh.executor.handler;
 
 import com.hotstrip.linux.monitor.common.Consts;
+import com.hotstrip.linux.monitor.common.listener.DataChangedListener;
 import com.hotstrip.linux.monitor.common.listener.ServerStatus;
 import com.hotstrip.linux.monitor.plugin.ssh.executor.ExecuteResult;
 import com.hotstrip.linux.monitor.plugin.ssh.listener.SSHDataChangedListener;
