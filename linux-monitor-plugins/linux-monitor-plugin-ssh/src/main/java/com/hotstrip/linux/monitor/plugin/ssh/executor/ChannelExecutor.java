@@ -14,12 +14,15 @@ public class ChannelExecutor implements Executor {
 
     private ChannelExec channelExec;
 
-    public ChannelExecutor(final ChannelExec channelExec) {
+    private ExecutorHandler executorHandler;
+
+    public ChannelExecutor(final ChannelExec channelExec, final ExecutorHandler executorHandler) {
         this.channelExec = channelExec;
+        this.executorHandler = executorHandler;
     }
 
     @Override
-    public void execute(final ExecutorHandler executorHandler) {
+    public void execute() {
         ExecuteResult executeResult = ExecuteResult.builder().build();
         try {
             InputStream in = this.channelExec.getInputStream();
@@ -43,6 +46,6 @@ public class ChannelExecutor implements Executor {
         } finally {
             this.channelExec.disconnect();
         }
-        executorHandler.handle(executeResult);
+        this.executorHandler.handle(executeResult);
     }
 }

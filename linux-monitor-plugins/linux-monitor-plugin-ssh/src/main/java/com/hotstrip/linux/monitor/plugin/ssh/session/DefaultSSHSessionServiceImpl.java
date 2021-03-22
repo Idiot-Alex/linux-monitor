@@ -1,7 +1,7 @@
 package com.hotstrip.linux.monitor.plugin.ssh.session;
 
 import com.hotstrip.linux.monitor.common.pojo.ServerData;
-import com.hotstrip.linux.monitor.plugin.ssh.JSchClient;
+import com.hotstrip.linux.monitor.plugin.ssh.client.JSchClient;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;

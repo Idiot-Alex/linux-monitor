@@ -47,8 +47,8 @@ public class TestSession {
             // 获取 Mac OS 系统的平均负载命令 uptime | cut -d":" -f4- | sed s/,//g
             ((ChannelExec) channel).setCommand("uptime | cut -d\":\" -f4- | sed s/,//g");
 
-            Executor executor = new ChannelExecutor((ChannelExec) channel);
-            executor.execute(new LoadAvgHandler());
+            Executor executor = new ChannelExecutor((ChannelExec) channel, new LoadAvgHandler());
+            executor.execute();
 
             sessionService.closeSession(session);
         } catch (JSchException e) {

@@ -4,5 +4,5 @@ import com.hotstrip.linux.monitor.plugin.ssh.executor.handler.ExecutorHandler;
 
 public interface Executor {
 
-    void execute(final ExecutorHandler executorHandler);
+    void execute();
 }
