@@ -9,6 +9,7 @@ import {
   Menu, Submenu, MenuItem, MenuItemGroup,
   Form, FormItem, Input,
   Row, Col,
+  Progress,
 } from 'element-ui';
 
 import router from './router';
@@ -32,6 +33,7 @@ Vue.use(FormItem);
 Vue.use(Input);
 Vue.use(Row);
 Vue.use(Col);
+Vue.use(Progress);
 
 new Vue({
   router,

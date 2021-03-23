@@ -15,6 +15,7 @@
         {{server.host}}
       </el-card>
     </el-row>
+    <el-progress type="circle" :percentage="25"></el-progress>
   </div>
 </template>
 <script>
