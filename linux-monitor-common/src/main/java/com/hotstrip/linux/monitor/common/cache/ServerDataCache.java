@@ -18,5 +18,15 @@ public class ServerDataCache {
         return ServerDataCacheHolder.INSTANCE;
     }
 
-    private static final ConcurrentMap<String, List<ServerPropertyData>> SERVER_PROPERTY_MAP = Maps.newConcurrentMap();
+    private static final ConcurrentMap<String, ServerPropertyData> SERVER_PROPERTY_MAP = Maps.newConcurrentMap();
+
+    // get data
+    public ServerPropertyData getData(final String host) {
+        return SERVER_PROPERTY_MAP.get(host);
+    }
+
+    // set data
+    public ServerPropertyData serData(final String host, final ServerPropertyData data) {
+        return SERVER_PROPERTY_MAP.put(host, data);
+    }
 }

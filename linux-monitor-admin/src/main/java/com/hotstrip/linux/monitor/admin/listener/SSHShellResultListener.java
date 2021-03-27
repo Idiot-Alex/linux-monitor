@@ -1,5 +1,6 @@
 package com.hotstrip.linux.monitor.admin.listener;
 
+import com.hotstrip.linux.monitor.common.cache.ServerDataCache;
 import com.hotstrip.linux.monitor.common.listener.ShellResultListener;
 import com.hotstrip.linux.monitor.common.pojo.CpuCoreData;
 import com.hotstrip.linux.monitor.common.pojo.LoadAvgData;
@@ -15,6 +16,7 @@ public class SSHShellResultListener implements ShellResultListener {
     @Override
     public void osName(OSNameData osNameData) {
         log.info("admin...osNameData: [{}]", JacksonUtil.objectToJsonString(osNameData));
+
     }
 
     @Override
