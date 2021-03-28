@@ -25,5 +25,3 @@ INSERT INTO `admin_user` (`id`, `user_name`,`password`, `create_time`, `update_t
 
 /* server */
 INSERT INTO `server` (`id`, `host`, `user`, `password`, `port`, `create_time`, `update_time`) VALUES (1, '127.0.0.1', 'test', '123456', 22, '2021-03-18 14:39:56','2021-03-18 15:43:43');
-INSERT INTO `server` (`id`, `host`, `user`, `password`, `port`, `create_time`, `update_time`) VALUES (2, '121.42.160.109', 'root', '272377@zx', 22, '2021-03-18 14:39:56','2021-03-18 15:43:43');
-INSERT INTO `server` (`id`, `host`, `user`, `password`, `port`, `create_time`, `update_time`) VALUES (3, '47.96.30.54', 'root', 'Chimoo2019', 22, '2021-03-18 14:39:56','2021-03-18 15:43:43');
