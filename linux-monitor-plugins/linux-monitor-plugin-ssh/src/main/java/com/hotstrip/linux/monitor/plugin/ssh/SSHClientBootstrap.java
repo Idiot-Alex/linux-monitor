@@ -35,7 +35,7 @@ public class SSHClientBootstrap implements AutoCloseable {
                     sshClient.doExecute();
                 }
             }
-        }, 10, 30, TimeUnit.SECONDS);
+        }, 10, 5, TimeUnit.SECONDS);
     }
 
     @Override

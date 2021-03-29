@@ -22,15 +22,28 @@ public class SSHShellResultListener implements ShellResultListener {
                 .osName(osNameData.getOsName())
                 .build();
         ServerDataCache.getInstance().cacheData(serverPropertyData);
+        log.info("admin...cache data: [{}]", ServerDataCache.getInstance().getData(osNameData.getHost()));
     }
 
     @Override
     public void loadAvg(LoadAvgData loadAvgData) {
         log.info("admin...loadAvgData: [{}]", JacksonUtil.objectToJsonString(loadAvgData));
+        ServerPropertyData serverPropertyData = ServerPropertyData.builder()
+                .host(loadAvgData.getHost())
+                .one(loadAvgData.getOne())
+                .five(loadAvgData.getFive())
+                .fifteen(loadAvgData.getFifteen())
+                .build();
+        ServerDataCache.getInstance().cacheData(serverPropertyData);
     }
 
     @Override
     public void cpuCores(CpuCoreData cpuCoreData) {
         log.info("admin...cpuCoreData: [{}]", JacksonUtil.objectToJsonString(cpuCoreData));
+        ServerPropertyData serverPropertyData = ServerPropertyData.builder()
+                .host(cpuCoreData.getHost())
+                .cores(cpuCoreData.getCores())
+                .build();
+        ServerDataCache.getInstance().cacheData(serverPropertyData);
     }
 }
