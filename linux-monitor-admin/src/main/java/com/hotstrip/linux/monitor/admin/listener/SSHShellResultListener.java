@@ -5,6 +5,7 @@ import com.hotstrip.linux.monitor.common.listener.ShellResultListener;
 import com.hotstrip.linux.monitor.common.pojo.CpuCoreData;
 import com.hotstrip.linux.monitor.common.pojo.LoadAvgData;
 import com.hotstrip.linux.monitor.common.pojo.OSNameData;
+import com.hotstrip.linux.monitor.common.pojo.ServerPropertyData;
 import com.hotstrip.linux.monitor.common.utils.JacksonUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -16,7 +17,11 @@ public class SSHShellResultListener implements ShellResultListener {
     @Override
     public void osName(OSNameData osNameData) {
         log.info("admin...osNameData: [{}]", JacksonUtil.objectToJsonString(osNameData));
-
+        ServerPropertyData serverPropertyData = ServerPropertyData.builder()
+                .host(osNameData.getHost())
+                .osName(osNameData.getOsName())
+                .build();
+        ServerDataCache.getInstance().cacheData(serverPropertyData);
     }
 
     @Override
