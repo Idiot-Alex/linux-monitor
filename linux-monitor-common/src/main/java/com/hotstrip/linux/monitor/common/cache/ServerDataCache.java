@@ -7,6 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentMap;
+import java.util.stream.Collectors;
 
 public class ServerDataCache {
     private ServerDataCache() {
@@ -23,16 +24,11 @@ public class ServerDataCache {
     private static final ConcurrentMap<String, ServerPropertyData> SERVER_PROPERTY_MAP = Maps.newConcurrentMap();
 
     // get data
-    public ServerPropertyData getData(final String host) {
-        return SERVER_PROPERTY_MAP.get(host);
+    public List<ServerPropertyData> getCacheDataList() {
+        return SERVER_PROPERTY_MAP.values().stream().collect(Collectors.toList());
     }
 
-    // set data
-    public ServerPropertyData serData(final String host, final ServerPropertyData data) {
-        return SERVER_PROPERTY_MAP.put(host, data);
-    }
-
-    public void cacheData(final ServerPropertyData serverPropertyData) {
+    public void setCacheData(final ServerPropertyData serverPropertyData) {
         Optional.ofNullable(serverPropertyData).ifPresent(this::addOrUpdate);
     }
 

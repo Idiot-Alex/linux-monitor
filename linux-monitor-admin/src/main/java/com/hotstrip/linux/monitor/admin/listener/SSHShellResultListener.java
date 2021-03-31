@@ -21,8 +21,7 @@ public class SSHShellResultListener implements ShellResultListener {
                 .host(osNameData.getHost())
                 .osName(osNameData.getOsName())
                 .build();
-        ServerDataCache.getInstance().cacheData(serverPropertyData);
-        log.info("admin...cache data: [{}]", ServerDataCache.getInstance().getData(osNameData.getHost()));
+        ServerDataCache.getInstance().setCacheData(serverPropertyData);
     }
 
     @Override
@@ -34,7 +33,7 @@ public class SSHShellResultListener implements ShellResultListener {
                 .five(loadAvgData.getFive())
                 .fifteen(loadAvgData.getFifteen())
                 .build();
-        ServerDataCache.getInstance().cacheData(serverPropertyData);
+        ServerDataCache.getInstance().setCacheData(serverPropertyData);
     }
 
     @Override
@@ -44,6 +43,6 @@ public class SSHShellResultListener implements ShellResultListener {
                 .host(cpuCoreData.getHost())
                 .cores(cpuCoreData.getCores())
                 .build();
-        ServerDataCache.getInstance().cacheData(serverPropertyData);
+        ServerDataCache.getInstance().setCacheData(serverPropertyData);
     }
 }

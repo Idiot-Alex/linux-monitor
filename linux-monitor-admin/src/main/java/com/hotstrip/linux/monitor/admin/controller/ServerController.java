@@ -7,7 +7,9 @@ import com.hotstrip.linux.monitor.admin.pojo.query.ServerQuery;
 import com.hotstrip.linux.monitor.admin.pojo.vo.ServerVO;
 import com.hotstrip.linux.monitor.admin.service.ServerService;
 import com.hotstrip.linux.monitor.common.Consts;
+import com.hotstrip.linux.monitor.common.cache.ServerDataCache;
 import com.hotstrip.linux.monitor.common.entity.Result;
+import com.hotstrip.linux.monitor.common.pojo.ServerPropertyData;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.annotations.Delete;
 import org.springframework.web.bind.annotation.*;
@@ -109,6 +111,16 @@ public class ServerController {
             return Result.error(Consts.ERROR, Consts.ERROR_MESSAGE);
         }
         return Result.success(Consts.SUCCESS_MESSAGE);
+    }
+
+    /**
+     * get Server property
+     * @return {@linkplain Result}
+     */
+    @GetMapping("/property")
+    public Result getServer() {
+        List<ServerPropertyData> list = ServerDataCache.getInstance().getCacheDataList();
+        return Result.success(Consts.SUCCESS_MESSAGE, list);
     }
 
 }
