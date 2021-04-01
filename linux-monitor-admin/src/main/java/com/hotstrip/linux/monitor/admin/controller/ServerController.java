@@ -117,8 +117,8 @@ public class ServerController {
      * get Server property
      * @return {@linkplain Result}
      */
-    @GetMapping("/property")
-    public Result getServer() {
+    @GetMapping("/properties")
+    public Result getServerProperties() {
         List<ServerPropertyData> list = ServerDataCache.getInstance().getCacheDataList();
         return Result.success(Consts.SUCCESS_MESSAGE, list);
     }
