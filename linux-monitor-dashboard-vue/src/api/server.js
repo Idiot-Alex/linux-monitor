@@ -16,3 +16,14 @@ export function getServerList(params) {
     params
   })
 }
+
+/**
+ * @returns 
+ */
+export function getServerProperties() {
+  return axios({
+    url: '/server/property',
+    method: 'get',
+    params
+  })
+}
