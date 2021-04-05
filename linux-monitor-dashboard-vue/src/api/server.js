@@ -23,7 +23,6 @@ export function getServerList(params) {
 export function getServerProperties() {
   return axios({
     url: '/server/properties',
-    method: 'get',
-    params
+    method: 'get'
   })
 }
