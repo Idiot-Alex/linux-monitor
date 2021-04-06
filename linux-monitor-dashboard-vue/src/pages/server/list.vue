@@ -15,17 +15,18 @@
         {{server.host}}
       </el-card>
     </el-row>
-    <el-progress type="circle" :percentage="25" width="100"></el-progress>
-    <el-progress type="circle" :percentage="25" width="60"></el-progress>
-    <el-progress type="circle" :percentage="25" width="30"></el-progress>
+    <el-progress type="circle" :percentage="25" :width="100"></el-progress>
+    <el-progress type="circle" :percentage="25" :width="60"></el-progress>
+    <el-progress type="circle" :percentage="25" :width="30"></el-progress>
   </div>
 </template>
 <script>
-import { getServerList } from '../../api/server';
+import { getServerList, getServerProperties } from '../../api/server';
 export default {
   data() {
     return {
       serverList: [],
+      serverProperties: [],
       listQuery: {
         pageNo: 1,
         pageSize: 10
@@ -34,6 +35,7 @@ export default {
   },
   created() {
     this.loadData();
+    this.loadProperties();
   },
   methods: {
     // load server list
@@ -41,6 +43,14 @@ export default {
       getServerList(this.listQuery).then(res => {
         if (res.code === 200) {
           this.serverList = res.data.dataList;
+        }
+      })
+    },
+    // load server property
+    loadProperties() {
+      getServerProperties().then(res => {
+        if (res.code === 200) {
+          this.serverProperties = res.data;
         }
       })
     }
