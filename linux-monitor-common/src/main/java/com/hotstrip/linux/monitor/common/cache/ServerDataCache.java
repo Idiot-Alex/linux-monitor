@@ -23,15 +23,26 @@ public class ServerDataCache {
 
     private static final ConcurrentMap<String, ServerPropertyData> SERVER_PROPERTY_MAP = Maps.newConcurrentMap();
 
-    // get data
+    /**
+     * get cache data list
+     * @return {@linkplain List<ServerPropertyData>}
+     */
     public List<ServerPropertyData> getCacheDataList() {
         return SERVER_PROPERTY_MAP.values().stream().collect(Collectors.toList());
     }
 
+    /**
+     * set cache data
+     * @param serverPropertyData {@linkplain ServerPropertyData}
+     */
     public void setCacheData(final ServerPropertyData serverPropertyData) {
         Optional.ofNullable(serverPropertyData).ifPresent(this::addOrUpdate);
     }
 
+    /**
+     * update cache data
+     * @param serverPropertyData
+     */
     private void addOrUpdate(final ServerPropertyData serverPropertyData) {
         final String key = serverPropertyData.getHost();
         if (SERVER_PROPERTY_MAP.containsKey(key)) {
