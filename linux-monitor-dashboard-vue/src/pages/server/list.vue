@@ -15,9 +15,11 @@
         {{server.host}}
       </el-card>
     </el-row>
-    <el-progress type="circle" :percentage="25" :width="100"></el-progress>
-    <el-progress type="circle" :percentage="25" :width="60"></el-progress>
-    <el-progress type="circle" :percentage="25" :width="30"></el-progress>
+    <div class="load-avg" v-for="i in 4" :key="i">
+      <el-progress class="one" type="circle" :percentage="25" :width="100"></el-progress>
+      <el-progress class="five" type="circle" :percentage="25" :width="60"></el-progress>
+      <el-progress class="fifteen" type="circle" :percentage="25" :width="30"></el-progress>
+    </div>
   </div>
 </template>
 <script>
@@ -60,5 +62,24 @@ export default {
 <style scoped>
 .server-cards {
   margin-top: 10px;
+}
+.load-avg {
+  position: relative;
+  display: block;
+  width: 100px;
+  height: 100px;
+}
+.one {
+  position: absolute;
+}
+.five {
+  position: absolute;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+.fifteen {
+  position: absolute;
+  margin-top: 35px;
+  margin-left: 35px;
 }
 </style>

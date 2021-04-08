@@ -5,7 +5,7 @@
       <el-header>
         <top-header />
       </el-header>
-      <el-main>
+      <el-main class="main">
         <keep-alive>
           <router-view/>
         </keep-alive>
@@ -29,5 +29,8 @@ export default {
 }
 </script>
 <style>
-
+.main {
+  height: calc(100vh - 100px);
+  overflow-y: scroll;
+}
 </style>
