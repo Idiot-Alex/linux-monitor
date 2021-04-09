@@ -12,14 +12,18 @@
     <!-- server status card -->
     <el-row class="server-cards">
       <el-card v-for="server in serverList" :key="server.id">
-        {{server.host}}
+        <div slot="header" class="clearfix">
+          <span>{{server.host}}</span>
+          <el-button style="float: right; padding: 3px 5px" type="text">top</el-button>
+          <el-button style="float: right; padding: 3px 5px" type="text">terminal</el-button>
+        </div>
+        <div class="load-avg" v-for="i in 4" :key="i">
+          <el-progress class="one" type="circle" :percentage="25" :width="100"></el-progress>
+          <el-progress class="five" type="circle" :percentage="25" :width="60"></el-progress>
+          <el-progress class="fifteen" type="circle" :percentage="25" :width="30"></el-progress>
+        </div>
       </el-card>
     </el-row>
-    <div class="load-avg" v-for="i in 4" :key="i">
-      <el-progress class="one" type="circle" :percentage="25" :width="100"></el-progress>
-      <el-progress class="five" type="circle" :percentage="25" :width="60"></el-progress>
-      <el-progress class="fifteen" type="circle" :percentage="25" :width="30"></el-progress>
-    </div>
   </div>
 </template>
 <script>
@@ -65,7 +69,7 @@ export default {
 }
 .load-avg {
   position: relative;
-  display: block;
+  display: inline-flex;
   width: 100px;
   height: 100px;
 }
