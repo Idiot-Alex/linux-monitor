@@ -6,7 +6,7 @@
         <el-input v-model="listQuery.host" placeholder="Host name"/>
       </el-col>
       <el-col :span="6">
-        <el-button type="primary">Seach</el-button>
+        <el-button type="primary" @click="loadData">Seach</el-button>
       </el-col>
     </el-row>
     <!-- server status card -->
@@ -17,10 +17,10 @@
           <el-button style="float: right; padding: 3px 5px" type="text">top</el-button>
           <el-button style="float: right; padding: 3px 5px" type="text">terminal</el-button>
         </div>
-        <div class="load-avg" v-for="i in 4" :key="i">
-          <el-progress class="one" type="circle" :percentage="25" :width="100"></el-progress>
-          <el-progress class="five" type="circle" :percentage="25" :width="60"></el-progress>
-          <el-progress class="fifteen" type="circle" :percentage="25" :width="30"></el-progress>
+        <div class="load-avg">
+          <el-progress class="one" type="circle" :show-text="false" :percentage="calcLoadAvg(server.one, server.cores)" :width="100"></el-progress>
+          <el-progress class="five" type="circle" :show-text="false" :percentage="calcLoadAvg(server.five, server.cores)" :width="70"></el-progress>
+          <el-progress class="fifteen" type="circle" :show-text="false" :percentage="calcLoadAvg(server.fiften, server.cores)" :width="40"></el-progress>
         </div>
       </el-card>
     </el-row>
@@ -36,12 +36,18 @@ export default {
       listQuery: {
         pageNo: 1,
         pageSize: 10
-      }
+      },
+      timer: null
     }
   },
   created() {
     this.loadData();
     this.loadProperties();
+  },
+  beforeDestroy() {
+    if (this.timer) {
+      clearInterval(this.timer);
+    }
   },
   methods: {
     // load server list
@@ -59,6 +65,31 @@ export default {
           this.serverProperties = res.data;
         }
       })
+      if (!this.timer) {
+        this.timer = setInterval(() => {
+          getServerProperties().then(res => {
+            if (res.code === 200) {
+              res.data.forEach(element => {
+                this.serverList.forEach(server => {
+                  if (element.host === server.host) {
+                    server = Object.assign(server, element);
+                  }
+                })
+              });
+            }
+          })
+          this.serverList = [...this.serverList];
+        }, 3000);
+      }
+    },
+    calcLoadAvg(loadAvg, cores) {
+      if (!loadAvg) {
+        return 1;
+      }
+      if (cores === 0) {
+        return 1
+      }
+      return loadAvg / cores * 100;
     }
   }
 }
@@ -78,12 +109,12 @@ export default {
 }
 .five {
   position: absolute;
-  margin-top: 20px;
-  margin-left: 20px;
+  margin-top: 15px;
+  margin-left: 15px;
 }
 .fifteen {
   position: absolute;
-  margin-top: 35px;
-  margin-left: 35px;
+  margin-top: 30px;
+  margin-left: 30px;
 }
 </style>
