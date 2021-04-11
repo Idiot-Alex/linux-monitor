@@ -18,8 +18,8 @@
           <el-button style="float: right; padding: 3px 5px" type="text">terminal</el-button>
         </div>
         <div class="load-avg">
-          <el-progress class="one" type="circle" :show-text="false" :percentage="calcLoadAvg(server.one, server.cores)" :width="100"></el-progress>
-          <el-progress class="five" type="circle" :show-text="false" :percentage="calcLoadAvg(server.five, server.cores)" :width="70"></el-progress>
+          <el-progress class="one" type="circle" :show-text="false" :percentage="calcLoadAvg(server.one, server.cores)" :width="80"></el-progress>
+          <el-progress class="five" type="circle" :show-text="false" :percentage="calcLoadAvg(server.five, server.cores)" :width="60"></el-progress>
           <el-progress class="fifteen" type="circle" :show-text="false" :percentage="calcLoadAvg(server.fiften, server.cores)" :width="40"></el-progress>
         </div>
       </el-card>
