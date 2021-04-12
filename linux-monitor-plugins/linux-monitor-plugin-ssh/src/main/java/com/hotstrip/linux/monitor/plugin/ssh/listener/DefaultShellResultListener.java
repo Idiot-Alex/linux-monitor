@@ -1,7 +1,8 @@
 package com.hotstrip.linux.monitor.plugin.ssh.listener;
 
 import com.hotstrip.linux.monitor.common.listener.ShellResultListener;
-import com.hotstrip.linux.monitor.common.pojo.CpuCoreData;
+import com.hotstrip.linux.monitor.common.pojo.CpuCoresData;
+import com.hotstrip.linux.monitor.common.pojo.CpuUsageData;
 import com.hotstrip.linux.monitor.common.pojo.LoadAvgData;
 import com.hotstrip.linux.monitor.common.pojo.OSNameData;
 import com.hotstrip.linux.monitor.common.utils.JacksonUtil;
@@ -20,7 +21,12 @@ public class DefaultShellResultListener implements ShellResultListener {
     }
 
     @Override
-    public void cpuCores(CpuCoreData cpuCoreData) {
-        log.info("ssh...cpuCoreData: [{}]", JacksonUtil.objectToJsonString(cpuCoreData));
+    public void cpuCores(CpuCoresData cpuCoresData) {
+        log.info("ssh...cpuCoreData: [{}]", JacksonUtil.objectToJsonString(cpuCoresData));
+    }
+
+    @Override
+    public void cpuUsage(CpuUsageData cpuUsageData) {
+        log.info("ssh...cpuCoreData: [{}]", JacksonUtil.objectToJsonString(cpuUsageData));
     }
 }

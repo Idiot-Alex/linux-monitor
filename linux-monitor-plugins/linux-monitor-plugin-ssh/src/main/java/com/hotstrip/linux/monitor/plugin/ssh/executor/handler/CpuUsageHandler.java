@@ -2,15 +2,17 @@ package com.hotstrip.linux.monitor.plugin.ssh.executor.handler;
 
 import com.hotstrip.linux.monitor.common.listener.ShellResultListener;
 import com.hotstrip.linux.monitor.common.pojo.CpuCoresData;
+import com.hotstrip.linux.monitor.common.pojo.CpuUsageData;
 import com.hotstrip.linux.monitor.plugin.ssh.executor.ExecuteResult;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 @Slf4j
-public class CpuCoresHandler implements ExecutorHandler {
+public class CpuUsageHandler implements ExecutorHandler {
     @Override
     public void handle(ExecuteResult executeResult, ShellResultListener shellResultListener) {
         if (!executeResult.success()) {
@@ -19,11 +21,11 @@ public class CpuCoresHandler implements ExecutorHandler {
         }
         InputStream is = new ByteArrayInputStream(executeResult.getResult().getBytes());
         Scanner scanner = new Scanner(is);
-        final int cpuCores = scanner.nextInt();
+        final BigDecimal cpuUsage = scanner.nextBigDecimal().setScale(1, BigDecimal.ROUND_UP);
 
-        shellResultListener.cpuCores(CpuCoresData.builder()
+        shellResultListener.cpuUsage(CpuUsageData.builder()
                 .host(executeResult.getHost())
-                .cores(cpuCores)
+                .cpuUsage(cpuUsage)
                 .build());
     }
 }

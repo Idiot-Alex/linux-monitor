@@ -2,10 +2,7 @@ package com.hotstrip.linux.monitor.admin.listener;
 
 import com.hotstrip.linux.monitor.common.cache.ServerDataCache;
 import com.hotstrip.linux.monitor.common.listener.ShellResultListener;
-import com.hotstrip.linux.monitor.common.pojo.CpuCoreData;
-import com.hotstrip.linux.monitor.common.pojo.LoadAvgData;
-import com.hotstrip.linux.monitor.common.pojo.OSNameData;
-import com.hotstrip.linux.monitor.common.pojo.ServerPropertyData;
+import com.hotstrip.linux.monitor.common.pojo.*;
 import com.hotstrip.linux.monitor.common.utils.JacksonUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -37,11 +34,21 @@ public class SSHShellResultListener implements ShellResultListener {
     }
 
     @Override
-    public void cpuCores(CpuCoreData cpuCoreData) {
-        log.info("admin...cpuCoreData: [{}]", JacksonUtil.objectToJsonString(cpuCoreData));
+    public void cpuCores(CpuCoresData cpuCoresData) {
+        log.info("admin...cpuCoresData: [{}]", JacksonUtil.objectToJsonString(cpuCoresData));
         ServerPropertyData serverPropertyData = ServerPropertyData.builder()
-                .host(cpuCoreData.getHost())
-                .cores(cpuCoreData.getCores())
+                .host(cpuCoresData.getHost())
+                .cores(cpuCoresData.getCores())
+                .build();
+        ServerDataCache.getInstance().setCacheData(serverPropertyData);
+    }
+
+    @Override
+    public void cpuUsage(CpuUsageData cpuUsageData) {
+        log.info("admin...cpuUsageData: [{}]", JacksonUtil.objectToJsonString(cpuUsageData));
+        ServerPropertyData serverPropertyData = ServerPropertyData.builder()
+                .host(cpuUsageData.getHost())
+                .cpuUsage(cpuUsageData.getCpuUsage())
                 .build();
         ServerDataCache.getInstance().setCacheData(serverPropertyData);
     }

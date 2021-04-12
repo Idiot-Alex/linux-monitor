@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,5 +18,6 @@ public class ServerPropertyData {
     private Double five;
     private Double fifteen;
     private Integer cores;
+    private BigDecimal cpuUsage;
 
 }

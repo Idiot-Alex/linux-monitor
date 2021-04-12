@@ -8,4 +8,5 @@ public class ConstPool {
     public static final String UNAME = "uname";
     public static final String LINUX_LOAD_AVG = "cat /proc/loadavg";
     public static final String LINUX_CPU_CORES = "cat /proc/cpuinfo |grep \"processor\" |wc -l";
+    public static final String LINUX_CPU_USAGE = "grep 'cpu ' /proc/stat | awk '{print ($2+$4)*100/($2+$4+$5)}'";
 }
