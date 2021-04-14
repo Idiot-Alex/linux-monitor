@@ -8,20 +8,14 @@ import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Builder
-public class ServerPropertyData {
+@NoArgsConstructor
+@AllArgsConstructor
+public class MemUsageData {
+
     private String host;
-    private String osName;
-    private Double one;
-    private Double five;
-    private Double fifteen;
-    private Integer cores;
-    private BigDecimal cpuUsage;
     private BigDecimal memTotal;
     private BigDecimal memUsed;
     private BigDecimal memFree;
     private BigDecimal memCache;
-
 }

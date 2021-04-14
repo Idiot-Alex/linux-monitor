@@ -14,6 +14,7 @@ public enum LinuxCommandEnum {
     LOAD_AVG(ConstPool.LINUX_LOAD_AVG),
     CPU_CORES(ConstPool.LINUX_CPU_CORES),
     CPU_USAGE(ConstPool.LINUX_CPU_USAGE),
+    MEM_USAGE(ConstPool.LINUX_MEM_USAGE),
     ;
 
     private String command;

@@ -52,4 +52,17 @@ public class SSHShellResultListener implements ShellResultListener {
                 .build();
         ServerDataCache.getInstance().setCacheData(serverPropertyData);
     }
+
+    @Override
+    public void memUsage(MemUsageData memUsageData) {
+        log.info("admin...memUsageData: [{}]", JacksonUtil.objectToJsonString(memUsageData));
+        ServerPropertyData serverPropertyData = ServerPropertyData.builder()
+                .host(memUsageData.getHost())
+                .memTotal(memUsageData.getMemTotal())
+                .memUsed(memUsageData.getMemUsed())
+                .memFree(memUsageData.getMemFree())
+                .memCache(memUsageData.getMemCache())
+                .build();
+        ServerDataCache.getInstance().setCacheData(serverPropertyData);
+    }
 }

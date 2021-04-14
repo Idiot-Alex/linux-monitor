@@ -1,9 +1,6 @@
 package com.hotstrip.linux.monitor.common.listener;
 
-import com.hotstrip.linux.monitor.common.pojo.CpuCoresData;
-import com.hotstrip.linux.monitor.common.pojo.CpuUsageData;
-import com.hotstrip.linux.monitor.common.pojo.LoadAvgData;
-import com.hotstrip.linux.monitor.common.pojo.OSNameData;
+import com.hotstrip.linux.monitor.common.pojo.*;
 
 public interface ShellResultListener {
 
@@ -14,5 +11,7 @@ public interface ShellResultListener {
     void cpuCores(CpuCoresData cpuCoreData);
 
     void cpuUsage(CpuUsageData cpuUsageData);
+
+    void memUsage(MemUsageData memUsageData);
 
 }

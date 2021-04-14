@@ -4,10 +4,7 @@ import com.hotstrip.linux.monitor.common.listener.ShellResultListener;
 import com.hotstrip.linux.monitor.plugin.ssh.enums.LinuxCommandEnum;
 import com.hotstrip.linux.monitor.plugin.ssh.executor.ChannelExecutor;
 import com.hotstrip.linux.monitor.plugin.ssh.executor.Executor;
-import com.hotstrip.linux.monitor.plugin.ssh.executor.handler.CpuCoresHandler;
-import com.hotstrip.linux.monitor.plugin.ssh.executor.handler.CpuUsageHandler;
-import com.hotstrip.linux.monitor.plugin.ssh.executor.handler.LoadAvgHandler;
-import com.hotstrip.linux.monitor.plugin.ssh.executor.handler.OSNameHandler;
+import com.hotstrip.linux.monitor.plugin.ssh.executor.handler.*;
 import com.hotstrip.linux.monitor.plugin.ssh.session.ConstPool;
 import com.jcraft.jsch.Channel;
 import com.jcraft.jsch.ChannelExec;
@@ -49,6 +46,7 @@ public class SSHClient {
         Optional.ofNullable(getLoadAvgExecutor()).ifPresent(executor -> this.executorList.add(executor));
         Optional.ofNullable(getCpuCoresExecutor()).ifPresent(executor -> this.executorList.add(executor));
         Optional.ofNullable(getCpuUsageExecutor()).ifPresent(executor -> this.executorList.add(executor));
+        Optional.ofNullable(getMemUsageExecutor()).ifPresent(executor -> this.executorList.add(executor));
     }
 
     /**
@@ -108,6 +106,22 @@ public class SSHClient {
             Channel channel = session.openChannel(ConstPool.EXEC_CHANNEL);
             ((ChannelExec) channel).setCommand(LinuxCommandEnum.CPU_USAGE.getCommand());
             Executor executor = new ChannelExecutor((ChannelExec) channel, this.shellResultListener, new CpuUsageHandler());
+            return executor;
+        } catch (JSchException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+     * get mem usage Executor
+     * @return
+     */
+    private Executor getMemUsageExecutor() {
+        try {
+            Channel channel = session.openChannel(ConstPool.EXEC_CHANNEL);
+            ((ChannelExec) channel).setCommand(LinuxCommandEnum.MEM_USAGE.getCommand());
+            Executor executor = new ChannelExecutor((ChannelExec) channel, this.shellResultListener, new MemUsageHandler());
             return executor;
         } catch (JSchException e) {
             e.printStackTrace();
