@@ -22,7 +22,7 @@
           <el-progress class="five" type="circle" :show-text="false" :percentage="calcLoadAvg(server.five, server.cores)" :width="60"></el-progress>
           <el-progress class="fifteen" type="circle" :show-text="false" :percentage="calcLoadAvg(server.fiften, server.cores)" :width="40"></el-progress>
         </div>
-        <div id="container"></div>
+        <div :id="server.host"></div>
       </el-card>
     </el-row>
   </div>
@@ -45,9 +45,6 @@ export default {
   created() {
     this.loadData();
     this.loadProperties();
-    setTimeout(() => {
-      this.drawLoadAvgChart();
-    }, 2000)
   },
   beforeDestroy() {
     if (this.timer) {
@@ -78,6 +75,7 @@ export default {
                 this.serverList.forEach(server => {
                   if (element.host === server.host) {
                     server = Object.assign(server, element);
+                    this.drawLoadAvgChart(server.host);
                   }
                 })
               });
@@ -98,7 +96,7 @@ export default {
       return loadAvg / cores * 100;
     },
     // 负载图表
-    drawLoadAvgChart() {
+    drawLoadAvgChart(containerId) {
       const data = [
         { type: '1-3秒', value: 0.16 },
         { type: '4-10秒', value: 0.125 },
@@ -110,7 +108,7 @@ export default {
       ];
 
       const chart = new Chart({
-        container: document.getElementById('container'),
+        container: document.getElementById(containerId),
         autoFit: true,
         height: 500,
       });
