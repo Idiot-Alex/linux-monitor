@@ -17,11 +17,6 @@
           <el-button style="float: right; padding: 3px 5px" type="text">top</el-button>
           <el-button style="float: right; padding: 3px 5px" type="text">terminal</el-button>
         </div>
-        <div class="load-avg">
-          <el-progress class="one" type="circle" :show-text="false" :percentage="calcLoadAvg(server.one, server.cores)" :width="80"></el-progress>
-          <el-progress class="five" type="circle" :show-text="false" :percentage="calcLoadAvg(server.five, server.cores)" :width="60"></el-progress>
-          <el-progress class="fifteen" type="circle" :show-text="false" :percentage="calcLoadAvg(server.fiften, server.cores)" :width="40"></el-progress>
-        </div>
         <div :id="server.host"></div>
       </el-card>
     </el-row>
@@ -75,7 +70,7 @@ export default {
                 this.serverList.forEach(server => {
                   if (element.host === server.host) {
                     server = Object.assign(server, element);
-                    this.drawLoadAvgChart(server.host);
+                    this.drawLoadAvgChart(server);
                   }
                 })
               });
@@ -96,52 +91,44 @@ export default {
       return loadAvg / cores * 100;
     },
     // 负载图表
-    drawLoadAvgChart(containerId) {
+    drawLoadAvgChart(server) {
+      server.chart = null;
       const data = [
-        { type: '1-3秒', value: 0.16 },
-        { type: '4-10秒', value: 0.125 },
-        { type: '11-30秒', value: 0.2 },
-        { type: '1-3分', value: 0.2 },
-        { type: '3-10分', value: 0.05 },
-        { type: '10-30分', value: 0.01 },
-        { type: '30+分', value: 0.015 },
+        { type: '1m', value: `${this.calcLoadAvg(server.one, server.cores)}%` },
+        { type: '5m', value: `${this.calcLoadAvg(server.five, server.cores)}%` },
+        { type: '15m', value: `${this.calcLoadAvg(server.fifteen, server.cores)}%` }
       ];
 
-      const chart = new Chart({
-        container: document.getElementById(containerId),
+      server.chart = new Chart({
+        container: document.getElementById(server.host),
         autoFit: true,
         height: 500,
       });
-      chart.data(data);
+      server.chart.data(data);
 
-      chart.axis(false);
-      chart.tooltip({
+      server.chart.axis(false);
+      server.chart.tooltip({
         showMarkers: false,
       });
-      chart.coordinate('theta', { innerRadius: 0.35 });
-      chart.legend(false);
-      chart
-        .interval({
+      server.chart.coordinate('theta', { innerRadius: 0.35 });
+      server.chart.legend(false);
+      server.chart.interval({
           background: { style: { fill: '#F0F0F0', fillOpacity: 1 }},
         })
         .position('type*value')
-        .color('type', (val) => {
-          const { colors10 } = chart.getTheme();
-          if (val === '10-30分' || val === '30+分') {
-            return '#ff4d4f';
-          }
-          return colors10[0];
-        })
+        // .color('type', (val) => {
+        //   const { colors10 } = chart.getTheme();
+        //   return colors10[0];
+        // })
         .style({
           lineCap: 'round',
-          
         });
-      chart.theme({
+      server.chart.theme({
         maxColumnWidth: 12,
         minColumnWidth: 12,
       })
-      chart.interaction('element-active')
-      chart.annotation().html({
+      server.chart.interaction('element-active')
+      server.chart.annotation().html({
         position: ['50%', '50%'],
         html: () => {
           return `<div style="transform:translate(-50%,-50%)">
@@ -149,7 +136,7 @@ export default {
           </div>`
         }
       })
-      chart.render();
+      server.chart.render();
     }
   }
 }
@@ -157,24 +144,5 @@ export default {
 <style scoped>
 .server-cards {
   margin-top: 10px;
-}
-.load-avg {
-  position: relative;
-  display: inline-flex;
-  width: 100px;
-  height: 100px;
-}
-.one {
-  position: absolute;
-}
-.five {
-  position: absolute;
-  margin-top: 15px;
-  margin-left: 15px;
-}
-.fifteen {
-  position: absolute;
-  margin-top: 30px;
-  margin-left: 30px;
 }
 </style>
