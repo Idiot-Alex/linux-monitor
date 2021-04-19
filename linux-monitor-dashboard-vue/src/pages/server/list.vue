@@ -92,7 +92,10 @@ export default {
     },
     // 负载图表
     drawLoadAvgChart(server) {
-      server.chart = null;
+      // 先销毁图表
+      if (server.chart) {
+        server.chart.destroy();
+      }
       const data = [
         { type: '1m', value: `${this.calcLoadAvg(server.one, server.cores)}%` },
         { type: '5m', value: `${this.calcLoadAvg(server.five, server.cores)}%` },
