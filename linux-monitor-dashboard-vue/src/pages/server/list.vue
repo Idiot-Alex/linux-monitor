@@ -17,7 +17,7 @@
           <el-button style="float: right; padding: 3px 5px" type="text">top</el-button>
           <el-button style="float: right; padding: 3px 5px" type="text">terminal</el-button>
         </div>
-        <div :id="server.host"></div>
+        <div :id="server.host" class="load-avg"></div>
       </el-card>
     </el-row>
   </div>
@@ -147,5 +147,9 @@ export default {
 <style scoped>
 .server-cards {
   margin-top: 10px;
+}
+.load-avg {
+  width: 200px;
+  height: 200px;
 }
 </style>
