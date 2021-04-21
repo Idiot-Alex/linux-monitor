@@ -18,6 +18,7 @@
           <el-button style="float: right; padding: 3px 5px" type="text">terminal</el-button>
         </div>
         <div :id="server.host" class="load-avg"></div>
+        <div :id="`${server.host}e`" class="load-avg"></div>
       </el-card>
     </el-row>
   </div>
@@ -71,6 +72,7 @@ export default {
                   if (element.host === server.host) {
                     server = Object.assign(server, element);
                     this.drawLoadAvgChart(server);
+                    this.drawChart(server);
                   }
                 })
               });
@@ -91,6 +93,95 @@ export default {
       return loadAvg / cores * 100;
     },
     // 负载图表
+    drawChart(server) {
+      if (!server.echart) {
+        var chartDom = document.getElementById(server.host + 'e');
+        server.echart = this.$echarts.init(chartDom, 'dark');
+      }
+      let option = {
+        series: [{
+            type: 'gauge',
+            startAngle: 90,
+            endAngle: -270,
+            pointer: {
+                show: false
+            },
+            progress: {
+                show: true,
+                overlap: false,
+                roundCap: true,
+                clip: false,
+                itemStyle: {
+                    borderWidth: 1,
+                    borderColor: '#464646'
+                }
+            },
+            axisLine: {
+
+                lineStyle: {
+                    width: 40
+                }
+            },
+            splitLine: {
+                show: false,
+                distance: 0,
+                length: 10
+            },
+            axisTick: {
+                show: false
+            },
+            axisLabel: {
+                show: false,
+                distance: 10
+            },
+            data: [{
+                value: this.calcLoadAvg(server.fifteen, server.cores),
+                name: 'Perfect',
+                title: {
+                    offsetCenter: ['0%', '-30%']
+                },
+                detail: {
+                    offsetCenter: ['0%', '-20%']
+                }
+            },
+            {
+                value: this.calcLoadAvg(server.five, server.cores),
+                name: 'Good',
+                title: {
+                    offsetCenter: ['0%', '0%']
+                },
+                detail: {
+                    offsetCenter: ['0%', '10%']
+                }
+            },
+            {
+                value: this.calcLoadAvg(server.one, server.cores),
+                name: 'Commonly',
+                title: {
+                    offsetCenter: ['0%', '30%']
+                },
+                detail: {
+                    offsetCenter: ['0%', '40%']
+                }
+            }
+            ],
+            title: {
+                fontSize: 14
+            },
+            detail: {
+                width: 30,
+                height: 14,
+                fontSize: 14,
+                color: 'auto',
+                borderColor: 'auto',
+                borderRadius: 20,
+                borderWidth: 1,
+                formatter: '{value}%'
+            }
+        }]
+      };
+      server.echart.setOption(option);
+    },
     drawLoadAvgChart(server) {
       // 先销毁图表
       if (server.chart) {
