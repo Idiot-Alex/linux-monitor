@@ -20,7 +20,7 @@ import './router/auth';
 import * as echarts from 'echarts/core';
 // 引入柱状图图表，图表后缀都为 Chart
 import {
-  GaugeChart
+  GaugeChart, PieChart
 } from 'echarts/charts';
 // 引入提示框，标题，直角坐标系组件，组件后缀都为 Component
 import {
@@ -41,7 +41,7 @@ echarts.use([
   TitleComponent, TooltipComponent, GridComponent,
   LegendComponent, ToolboxComponent, VisualMapComponent, TimelineComponent, CalendarComponent,
   CanvasRenderer,
-  GaugeChart
+  GaugeChart, PieChart
 ]);
 
 Vue.config.productionTip = false;

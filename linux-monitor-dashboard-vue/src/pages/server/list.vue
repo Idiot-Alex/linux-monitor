@@ -17,7 +17,8 @@
           <el-button style="float: right; padding: 3px 5px" type="text">top</el-button>
           <el-button style="float: right; padding: 3px 5px" type="text">terminal</el-button>
         </div>
-        <div :id="server.host" class="load-avg"></div>
+        <div :id="`${server.host}-load-avg`" class="load-avg chart"></div>
+        <div :id="`${server.host}-mem`" class="mem chart"></div>
       </el-card>
     </el-row>
   </div>
@@ -70,6 +71,7 @@ export default {
                   if (element.host === server.host) {
                     server = Object.assign(server, element);
                     this.drawLoadAvgChart(server);
+                    this.drawMemChart(server);
                   }
                 })
               });
@@ -91,10 +93,10 @@ export default {
     },
     // 负载图表
     drawLoadAvgChart(server) {
-      if (!server.echart) {
-        var chartDom = document.getElementById(server.host);
-        server.echart = this.$echarts.init(chartDom, 'dark');
-        server.option = {
+      if (!server.load_avg_echart) {
+        let load_avg_echart = document.getElementById(`${server.host}-load-avg`);
+        server.load_avg_echart = this.$echarts.init(load_avg_echart, 'dark');
+        server.load_avg_option = {
           series: [{
               type: 'gauge',
               startAngle: 90,
@@ -176,11 +178,58 @@ export default {
           }]
         };
       }
-      server.option.series[0].data[0].value = this.calcLoadAvg(server.one, server.cores);
-      server.option.series[0].data[1].value = this.calcLoadAvg(server.five, server.cores);
-      server.option.series[0].data[2].value = this.calcLoadAvg(server.fifteen, server.cores);
-      server.echart.setOption(server.option, true);
+      server.load_avg_option.series[0].data[0].value = this.calcLoadAvg(server.one, server.cores);
+      server.load_avg_option.series[0].data[1].value = this.calcLoadAvg(server.five, server.cores);
+      server.load_avg_option.series[0].data[2].value = this.calcLoadAvg(server.fifteen, server.cores);
+      server.load_avg_echart.setOption(server.load_avg_option, true);
     },
+    // 内存图表
+    drawMemChart(server) {
+      if (!server.mem_echart) {
+        let mem_echart = document.getElementById(`${server.host}-mem`);
+        server.mem_echart = this.$echarts.init(mem_echart, 'dark');
+        server.mem_option = {
+            tooltip: {
+                trigger: 'item'
+            },
+            legend: {
+                top: '5%',
+                left: 'center'
+            },
+            series: [
+                {
+                    name: '内存 MB',
+                    type: 'pie',
+                    radius: ['40%', '70%'],
+                    avoidLabelOverlap: false,
+                    label: {
+                        show: false,
+                        position: 'center'
+                    },
+                    emphasis: {
+                        label: {
+                            show: true,
+                            fontSize: '40',
+                            fontWeight: 'bold'
+                        }
+                    },
+                    labelLine: {
+                        show: false
+                    },
+                    data: [
+                        {value: server.memUsed, name: '已使用'},
+                        {value: server.memCache, name: '页面缓存'},
+                        {value: server.memFree, name: '可用'}
+                    ]
+                }
+            ]
+        };
+      }
+      server.mem_option.series[0].data[0].value = server.memUsed;
+      server.mem_option.series[0].data[1].value = server.memCache;
+      server.mem_option.series[0].data[2].value = server.memFree;
+      server.mem_echart.setOption(server.mem_option, true);
+    }
   }
 }
 </script>
@@ -191,5 +240,12 @@ export default {
 .load-avg {
   width: 300px;
   height: 300px;
+}
+.mem {
+  width: 300px;
+  height: 300px;
+}
+.chart {
+  display: table-cell;
 }
 </style>
