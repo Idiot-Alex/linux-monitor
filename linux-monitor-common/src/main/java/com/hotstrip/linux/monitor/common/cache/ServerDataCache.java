@@ -58,6 +58,16 @@ public class ServerDataCache {
                     tempData.setFifteen(serverPropertyData.getFifteen());
                 if (null != serverPropertyData.getCores())
                     tempData.setCores(serverPropertyData.getCores());
+                if (null != serverPropertyData.getCpuUsage())
+                    tempData.setCpuUsage(serverPropertyData.getCpuUsage());
+                if (null != serverPropertyData.getMemTotal())
+                    tempData.setMemTotal(serverPropertyData.getMemTotal());
+                if (null != serverPropertyData.getMemUsed())
+                    tempData.setMemUsed(serverPropertyData.getMemUsed());
+                if (null != serverPropertyData.getMemFree())
+                    tempData.setMemFree(serverPropertyData.getMemFree());
+                if (null != serverPropertyData.getMemCache())
+                    tempData.setMemCache(serverPropertyData.getMemCache());
                 return tempData;
             }).orElse(null);
             SERVER_PROPERTY_MAP.put(key, resultData);
