@@ -21,11 +21,19 @@ public class CpuUsageHandler implements ExecutorHandler {
         }
         InputStream is = new ByteArrayInputStream(executeResult.getResult().getBytes());
         Scanner scanner = new Scanner(is);
-        final BigDecimal cpuUsage = scanner.nextBigDecimal().setScale(1, BigDecimal.ROUND_UP);
+        final BigDecimal cpuUsr = scanner.nextBigDecimal();
+        final BigDecimal cpuSys = scanner.nextBigDecimal();
+        final BigDecimal cpuIoWait = scanner.nextBigDecimal();
+        final BigDecimal cpuSteal = scanner.nextBigDecimal();
+        final BigDecimal cpuUsage = cpuUsr.add(cpuSys).add(cpuIoWait).add(cpuSteal);
 
         shellResultListener.cpuUsage(CpuUsageData.builder()
                 .host(executeResult.getHost())
                 .cpuUsage(cpuUsage)
+                .cpuUsr(cpuUsr)
+                .cpuSys(cpuSys)
+                .cpuIoWait(cpuIoWait)
+                .cpuSteal(cpuSteal)
                 .build());
     }
 }
