@@ -19,6 +19,7 @@
         </div>
         <div :id="`${server.host}-load-avg`" class="load-avg chart"></div>
         <div :id="`${server.host}-mem`" class="mem chart"></div>
+        <div :id="`${server.host}-cpu`" class="cpu chart"></div>
       </el-card>
     </el-row>
   </div>
@@ -72,6 +73,7 @@ export default {
                     server = Object.assign(server, element);
                     this.drawLoadAvgChart(server);
                     this.drawMemChart(server);
+                    this.drawCpuChart(server);
                   }
                 })
               });
@@ -229,6 +231,105 @@ export default {
       server.mem_option.series[0].data[1].value = server.memCache;
       server.mem_option.series[0].data[2].value = server.memFree;
       server.mem_echart.setOption(server.mem_option, true);
+    },
+    // CPU 图表
+    drawCpuChart(server) {
+      if (!server.cpu_echart) {
+        let cpu_echart = document.getElementById(`${server.host}-cpu`);
+        server.cpu_echart = this.$echarts.init(cpu_echart, 'dark');
+        server.cpu_option = {
+            series: [{
+                type: 'gauge',
+                anchor: {
+                    show: true,
+                    showAbove: true,
+                    size: 18,
+                    itemStyle: {
+                        color: '#FAC858'
+                    }
+                },
+                pointer: {
+                    icon: 'path://M2.9,0.7L2.9,0.7c1.4,0,2.6,1.2,2.6,2.6v115c0,1.4-1.2,2.6-2.6,2.6l0,0c-1.4,0-2.6-1.2-2.6-2.6V3.3C0.3,1.9,1.4,0.7,2.9,0.7z',
+                    width: 3,
+                    length: '80%',
+                    offsetCenter: [0, '8%']
+                },
+
+                progress: {
+                    show: true,
+                    overlap: true,
+                    roundCap: true
+                },
+                axisLine: {
+                    roundCap: true
+                },
+                data: [{
+                    value: 0,
+                    name: '系统',
+                    title: {
+                        offsetCenter: ['-90%', '90%']
+                    },
+                    detail: {
+                        offsetCenter: ['-90%', '115%']
+                    }
+                },
+                {
+                    value: 0,
+                    name: '用户',
+                    title: {
+                        offsetCenter: ['-30%', '90%']
+                    },
+                    detail: {
+                        offsetCenter: ['-30%', '115%']
+                    }
+                },
+                {
+                    value: 0,
+                    name: 'IO 等待',
+                    title: {
+                        offsetCenter: ['30%', '90%']
+                    },
+                    detail: {
+                        offsetCenter: ['30%', '115%']
+                    }
+                },
+                {
+                    value: 0,
+                    name: 'STEAL',
+                    title: {
+                        offsetCenter: ['90%', '90%']
+                    },
+                    detail: {
+                        offsetCenter: ['90%', '115%']
+                    }
+                },
+                {
+                    value: 0,
+                    name: 'CPU'
+                }
+                ],
+                title: {
+                    fontSize: 14
+                },
+                detail: {
+                    width: 40,
+                    height: 14,
+                    fontSize: 14,
+                    color: '#fff',
+                    backgroundColor: 'auto',
+                    borderRadius: 3,
+                    formatter: '{value}%'
+                }
+            }]
+        };
+        
+      }
+      server.cpu_option.series[0].data[0].value = server.cpuSys;
+      server.cpu_option.series[0].data[1].value = server.cpuUsr;
+      server.cpu_option.series[0].data[2].value = server.cpuIoWait;
+      server.cpu_option.series[0].data[3].value = server.cpuSteal;
+      server.cpu_option.series[0].data[4].value = server.cpuUsage;
+      server.cpu_echart.setOption(server.cpu_option, true);
     }
   }
 }
@@ -242,6 +343,10 @@ export default {
   height: 300px;
 }
 .mem {
+  width: 300px;
+  height: 300px;
+}
+.cpu {
   width: 300px;
   height: 300px;
 }
