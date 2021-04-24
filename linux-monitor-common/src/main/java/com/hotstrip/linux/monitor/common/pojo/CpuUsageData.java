@@ -16,4 +16,8 @@ public class CpuUsageData {
 
     private String host;
     private BigDecimal cpuUsage;
+    private BigDecimal cpuUsr;
+    private BigDecimal cpuSys;
+    private BigDecimal cpuIoWait;
+    private BigDecimal cpuSteal;
 }

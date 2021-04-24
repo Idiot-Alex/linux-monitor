@@ -19,6 +19,10 @@ public class ServerPropertyData {
     private Double fifteen;
     private Integer cores;
     private BigDecimal cpuUsage;
+    private BigDecimal cpuUsr;
+    private BigDecimal cpuSys;
+    private BigDecimal cpuIoWait;
+    private BigDecimal cpuSteal;
     private BigDecimal memTotal;
     private BigDecimal memUsed;
     private BigDecimal memFree;

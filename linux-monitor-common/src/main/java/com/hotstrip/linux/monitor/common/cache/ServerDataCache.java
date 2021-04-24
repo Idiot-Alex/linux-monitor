@@ -50,24 +50,46 @@ public class ServerDataCache {
             final ServerPropertyData resultData = Optional.ofNullable(tempData).map(data -> {
                 if (StringUtils.isNotBlank(serverPropertyData.getOsName()))
                     tempData.setOsName(serverPropertyData.getOsName());
+
                 if (null != serverPropertyData.getOne())
                     tempData.setOne(serverPropertyData.getOne());
+
                 if (null != serverPropertyData.getFive())
                     tempData.setFive(serverPropertyData.getFive());
+
                 if (null != serverPropertyData.getFifteen())
                     tempData.setFifteen(serverPropertyData.getFifteen());
+
                 if (null != serverPropertyData.getCores())
                     tempData.setCores(serverPropertyData.getCores());
+
                 if (null != serverPropertyData.getCpuUsage())
                     tempData.setCpuUsage(serverPropertyData.getCpuUsage());
+
+                if (null != serverPropertyData.getCpuUsr())
+                    tempData.setCpuUsr(serverPropertyData.getCpuUsr());
+
+                if (null != serverPropertyData.getCpuSys())
+                    tempData.setCpuSys(serverPropertyData.getCpuSys());
+
+                if (null != serverPropertyData.getCpuIoWait())
+                    tempData.setCpuIoWait(serverPropertyData.getCpuIoWait());
+
+                if (null != serverPropertyData.getCpuSteal())
+                    tempData.setCpuSteal(serverPropertyData.getCpuSteal());
+
                 if (null != serverPropertyData.getMemTotal())
                     tempData.setMemTotal(serverPropertyData.getMemTotal());
+
                 if (null != serverPropertyData.getMemUsed())
                     tempData.setMemUsed(serverPropertyData.getMemUsed());
+
                 if (null != serverPropertyData.getMemFree())
                     tempData.setMemFree(serverPropertyData.getMemFree());
+
                 if (null != serverPropertyData.getMemCache())
                     tempData.setMemCache(serverPropertyData.getMemCache());
+
                 return tempData;
             }).orElse(null);
             SERVER_PROPERTY_MAP.put(key, resultData);
