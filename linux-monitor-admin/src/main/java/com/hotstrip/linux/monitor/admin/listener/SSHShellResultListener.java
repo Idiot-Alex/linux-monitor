@@ -49,6 +49,10 @@ public class SSHShellResultListener implements ShellResultListener {
         ServerPropertyData serverPropertyData = ServerPropertyData.builder()
                 .host(cpuUsageData.getHost())
                 .cpuUsage(cpuUsageData.getCpuUsage())
+                .cpuUsr(cpuUsageData.getCpuUsr())
+                .cpuSys(cpuUsageData.getCpuSys())
+                .cpuIoWait(cpuUsageData.getCpuIoWait())
+                .cpuSteal(cpuUsageData.getCpuSteal())
                 .build();
         ServerDataCache.getInstance().setCacheData(serverPropertyData);
     }
