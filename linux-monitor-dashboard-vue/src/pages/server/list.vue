@@ -17,9 +17,11 @@
           <el-button style="float: right; padding: 3px 5px" type="text">top</el-button>
           <el-button style="float: right; padding: 3px 5px" type="text">terminal</el-button>
         </div>
-        <div :id="`${server.host}-load-avg`" class="load-avg chart"></div>
-        <div :id="`${server.host}-mem`" class="mem chart"></div>
-        <div :id="`${server.host}-cpu`" class="cpu chart"></div>
+        <div class="charts">
+          <div :id="`${server.host}-load-avg`" class="load-avg chart"></div>
+          <div :id="`${server.host}-mem`" class="mem chart"></div>
+          <div :id="`${server.host}-cpu`" class="cpu chart"></div>
+        </div>
       </el-card>
     </el-row>
   </div>
@@ -195,7 +197,7 @@ export default {
                 trigger: 'item'
             },
             legend: {
-                top: '5%',
+                bottom: '5px',
                 left: 'center'
             },
             series: [
@@ -250,7 +252,7 @@ export default {
                 },
                 pointer: {
                     icon: 'path://M2.9,0.7L2.9,0.7c1.4,0,2.6,1.2,2.6,2.6v115c0,1.4-1.2,2.6-2.6,2.6l0,0c-1.4,0-2.6-1.2-2.6-2.6V3.3C0.3,1.9,1.4,0.7,2.9,0.7z',
-                    width: 3,
+                    width: 2,
                     length: '80%',
                     offsetCenter: [0, '8%']
                 },
@@ -324,11 +326,11 @@ export default {
         };
         
       }
-      server.cpu_option.series[0].data[0].value = server.cpuSys;
-      server.cpu_option.series[0].data[1].value = server.cpuUsr;
-      server.cpu_option.series[0].data[2].value = server.cpuIoWait;
-      server.cpu_option.series[0].data[3].value = server.cpuSteal;
-      server.cpu_option.series[0].data[4].value = server.cpuUsage;
+      server.cpu_option.series[0].data[0].value = server.cpuSys || 0;
+      server.cpu_option.series[0].data[1].value = server.cpuUsr || 0;
+      server.cpu_option.series[0].data[2].value = server.cpuIoWait || 0;
+      server.cpu_option.series[0].data[3].value = server.cpuSteal || 0;
+      server.cpu_option.series[0].data[4].value = server.cpuUsage || 0;
       server.cpu_echart.setOption(server.cpu_option, true);
     }
   }
@@ -337,6 +339,9 @@ export default {
 <style scoped>
 .server-cards {
   margin-top: 10px;
+}
+.charts {
+  display: flex;
 }
 .load-avg {
   width: 300px;
@@ -351,6 +356,6 @@ export default {
   height: 300px;
 }
 .chart {
-  display: table-cell;
+  flex: 0 0 300px;
 }
 </style>
