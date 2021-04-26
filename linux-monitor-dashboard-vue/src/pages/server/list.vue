@@ -103,8 +103,8 @@ export default {
         server.load_avg_option = {
           series: [{
               type: 'gauge',
-              startAngle: 90,
-              endAngle: -270,
+              startAngle: -90,
+              endAngle: -450,
               pointer: {
                   show: false
               },
@@ -318,7 +318,7 @@ export default {
                     height: 14,
                     fontSize: 14,
                     color: '#fff',
-                    backgroundColor: 'auto',
+                    backgroundColor: 'inherit',
                     borderRadius: 3,
                     formatter: '{value}%'
                 }
