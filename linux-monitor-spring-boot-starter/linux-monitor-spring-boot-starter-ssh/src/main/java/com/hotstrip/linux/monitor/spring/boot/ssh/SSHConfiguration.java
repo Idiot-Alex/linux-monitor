@@ -22,6 +22,7 @@ public class SSHConfiguration {
     @Bean("shellResultListener")
     @ConditionalOnMissingBean(ShellResultListener.class)
     public ShellResultListener shellResultListener() {
+        log.error("There is no Bean named: [shellResultListener], the default listener will be used.");
         return new DefaultShellResultListener();
     }
 

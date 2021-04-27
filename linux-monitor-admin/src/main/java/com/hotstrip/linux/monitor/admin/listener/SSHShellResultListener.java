@@ -5,9 +5,7 @@ import com.hotstrip.linux.monitor.common.listener.ShellResultListener;
 import com.hotstrip.linux.monitor.common.pojo.*;
 import com.hotstrip.linux.monitor.common.utils.JacksonUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
 
-@Component("shellResultListener")
 @Slf4j
 public class SSHShellResultListener implements ShellResultListener {
 
