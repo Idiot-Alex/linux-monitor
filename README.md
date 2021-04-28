@@ -3,6 +3,6 @@ Monitoring the status of the Linux server
 
 ## snapshots
 
-[load avg](https://github.com/Idiot-Alex/linux-monitor/blob/docs/pictures/load-avg.png)
-[mem](https://github.com/Idiot-Alex/linux-monitor/blob/docs/pictures/mem.png)
-[cpu](https://github.com/Idiot-Alex/linux-monitor/blob/docs/pictures/cpu.png)
+![load avg](https://raw.githubusercontent.com/Idiot-Alex/linux-monitor/main/docs/pictures/cpu.png)
+![mem](https://raw.githubusercontent.com/Idiot-Alex/linux-monitor/main/docs/pictures/mem.png)
+![cpu](https://raw.githubusercontent.com/Idiot-Alex/linux-monitor/main/docs/pictures/cpu.png)
