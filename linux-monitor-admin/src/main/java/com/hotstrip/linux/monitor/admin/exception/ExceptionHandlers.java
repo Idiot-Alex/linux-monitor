@@ -20,7 +20,7 @@ public class ExceptionHandlers {
     @ResponseBody
     @ExceptionHandler(Exception.class)
     protected Result serverExceptionHandler(final Exception exception) {
-        log.error(exception.getMessage(), exception);
+        log.error("catch global exception, message: [{}], caused: [{}]", exception.getMessage(), exception.getCause());
         String message;
         if (exception instanceof MonitorException) {
             MonitorException monitorException = (MonitorException) exception;
