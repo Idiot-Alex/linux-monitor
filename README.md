@@ -2,9 +2,9 @@
 Monitoring the status of the Linux server
 
 - Server usage status
-[x] load avg
-[x] cpu usage
-[x] mem usage
+- [x] load avg
+- [x] cpu usage
+- [x] mem usage
 
 ## snapshots
 
