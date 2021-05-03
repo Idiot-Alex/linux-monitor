@@ -7,6 +7,7 @@
       </el-col>
       <el-col :span="6">
         <el-button type="primary" @click="loadData">Seach</el-button>
+        <el-button type="primary" @click="loadData">Add</el-button>
       </el-col>
     </el-row>
     <!-- server status card -->
