@@ -7,7 +7,7 @@
       </el-col>
       <el-col :span="6">
         <el-button type="primary" @click="loadData">Seach</el-button>
-        <el-button type="primary" @click="loadData">Add</el-button>
+        <el-button type="primary" @click="addServer">Add</el-button>
       </el-col>
     </el-row>
     <!-- server status card -->
@@ -25,6 +25,27 @@
         </div>
       </el-card>
     </el-row>
+    <!-- edit dialog -->
+    <el-dialog title="Edit Server" :visible.sync="dialogVisible" width="30%">
+      <el-form ref="form" :model="temp" label-width="100px">
+        <el-form-item label="Host Name">
+          <el-input v-model="temp.host" placeholder="Host Name"/>
+        </el-form-item>
+        <el-form-item label="User">
+          <el-input v-model="temp.user" placeholder="User"/>
+        </el-form-item>
+        <el-form-item label="Password">
+          <el-input type="password" v-model="temp.password" placeholder="Password"/>
+        </el-form-item>
+        <el-form-item label="Port">
+          <el-input-number v-model.number="temp.port" placeholder="Port"/>
+        </el-form-item>
+      </el-form>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="dialogVisible = false">Cancel</el-button>
+        <el-button type="primary" @click="dialogVisible = false">Confirm</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 <script>
@@ -38,7 +59,9 @@ export default {
         pageNo: 1,
         pageSize: 10
       },
-      timer: null
+      timer: null,
+      dialogVisible: false,
+      temp: {}
     }
   },
   created() {
@@ -333,6 +356,13 @@ export default {
       server.cpu_option.series[0].data[3].value = server.cpuSteal || 0;
       server.cpu_option.series[0].data[4].value = server.cpuUsage || 0;
       server.cpu_echart.setOption(server.cpu_option, true);
+    },
+    // 添加 server
+    addServer() {
+      this.temp = {
+        port: 22
+      };
+      this.dialogVisible = true;
     }
   }
 }

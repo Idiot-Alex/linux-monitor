@@ -7,9 +7,10 @@ import {
   Notification, Button,
   Container, Header, Aside, Main, Card,
   Menu, Submenu, MenuItem, MenuItemGroup,
-  Form, FormItem, Input,
+  Form, FormItem, Input, InputNumber,
   Row, Col,
   Progress,
+  Dialog
 } from 'element-ui';
 
 import router from './router';
@@ -60,9 +61,11 @@ Vue.use(MenuItemGroup);
 Vue.use(Form);
 Vue.use(FormItem);
 Vue.use(Input);
+Vue.use(InputNumber);
 Vue.use(Row);
 Vue.use(Col);
 Vue.use(Progress);
+Vue.use(Dialog);
 
 new Vue({
   router,
