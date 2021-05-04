@@ -18,11 +18,31 @@ export function getServerList(params) {
 }
 
 /**
+ * get server properties
  * @returns 
  */
 export function getServerProperties() {
   return axios({
     url: '/server/properties',
     method: 'get'
+  })
+}
+
+/**
+ * edit server
+ * @param {
+ *  id: ID
+ *  host: host
+ *  user: user
+ *  password: password
+ *  port: port
+ * } params
+ * @returns 
+ */
+export function editServer(params) {
+  return axios({
+    url: '/server',
+    method: 'post',
+    data: params
   })
 }

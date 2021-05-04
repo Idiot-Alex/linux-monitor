@@ -43,13 +43,13 @@
       </el-form>
       <span slot="footer" class="dialog-footer">
         <el-button @click="dialogVisible = false">Cancel</el-button>
-        <el-button type="primary" @click="dialogVisible = false">Confirm</el-button>
+        <el-button type="primary" @click="submitServer">Confirm</el-button>
       </span>
     </el-dialog>
   </div>
 </template>
 <script>
-import { getServerList, getServerProperties } from '../../api/server';
+import { getServerList, getServerProperties, editServer } from '../../api/server';
 export default {
   data() {
     return {
@@ -357,12 +357,20 @@ export default {
       server.cpu_option.series[0].data[4].value = server.cpuUsage || 0;
       server.cpu_echart.setOption(server.cpu_option, true);
     },
-    // 添加 server
+    // add server
     addServer() {
       this.temp = {
         port: 22
       };
       this.dialogVisible = true;
+    },
+    // submit server
+    submitServer() {
+      editServer(this.temp).then(res => {
+        if (res.code === 200) {
+          this.dialogVisible = false;
+        }
+      })
     }
   }
 }
