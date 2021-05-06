@@ -368,6 +368,12 @@ export default {
     submitServer() {
       editServer(this.temp).then(res => {
         if (res.code === 200) {
+          this.$notify.success({
+            title: 'Success',
+            message: res.message,
+            offset: 100,
+            duration: 2 * 1000
+          });
           this.dialogVisible = false;
         }
       })
