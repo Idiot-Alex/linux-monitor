@@ -374,7 +374,9 @@ export default {
             offset: 100,
             duration: 2 * 1000
           });
+          // close dialog
           this.dialogVisible = false;
+          this.loadData();
         }
       })
     }
