@@ -48,7 +48,6 @@ public class ChannelExecutor implements Executor {
                 Thread.sleep(200);
             }
         } catch (IOException | JSchException | InterruptedException e) {
-            e.printStackTrace();
             log.error("ChannelExecutor exec failed, message: {}, caused: {}", e.getMessage(), e.getCause());
         } finally {
             this.channelExec.disconnect();

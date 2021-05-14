@@ -27,8 +27,8 @@ public class SSHConfiguration {
     }
 
     @Bean
-    public SSHClientBootstrap sshClientBootstrap(final ShellResultListener shellResultListener) {
-        return new SSHClientBootstrap(shellResultListener);
+    public SSHClientBootstrap sshClientBootstrap(final ShellResultListener shellResultListener, final SSHSessionService sshSessionService) {
+        return new SSHClientBootstrap(shellResultListener, sshSessionService);
     }
 
 
